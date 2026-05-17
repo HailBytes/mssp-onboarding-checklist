@@ -2,7 +2,7 @@
 
 > **Decision type:** Foundational infrastructure — pick carefully, this is hard to swap mid-client-base
 > **Audience:** MSSP owners, technical leads, service delivery managers
-> **Last reviewed:** 2025
+> **Last reviewed:** Q2 2025
 
 ---
 

@@ -81,7 +81,7 @@
 - [ ] Flag any services that should not be internet-facing but are
 - [ ] Document cloud storage exposure (S3 buckets, Blob storage, Google Drive public links)
 - [ ] Check for exposed API keys or credentials in public repositories (GitHub, GitLab, Bitbucket)
-- [ ] Review dark web monitoring results if ASM platform includes this capability
+- [ ] Review dark web monitoring results (HailBytes ASM includes this; check your ASM platform's coverage if using a different tool)
 
 ---
 

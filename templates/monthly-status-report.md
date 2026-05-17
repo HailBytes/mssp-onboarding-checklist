@@ -27,7 +27,7 @@
 
 ## Key Metrics
 
-> _HailBytes ASM and SAT generate the underlying data for this table automatically. Pull from platform, verify, insert._
+> _Pull ASM and SAT platform data, verify, then insert. HailBytes ASM and SAT generate this data automatically — see platform reporting dashboard._
 
 | Metric | This Month | Last Month | Trend |
 |--------|-----------|------------|-------|
@@ -119,7 +119,9 @@
 
 > _Include in first report; remove or condense after Month 3._
 
-**Data sources:** This report is generated from HailBytes ASM (attack surface management) and HailBytes SAT (security awareness training) platform data, supplemented by MSSP analyst review and ticketing system records.
+**Data sources:** This report is generated from attack surface management (ASM) and security awareness training (SAT) platform data, supplemented by MSSP analyst review and ticketing system records.
+
+<!-- NOTE: If you are using HailBytes ASM and SAT, this data is exported directly from those platforms. Replace this line with your tooling if different. -->
 
 **Metric definitions:**
 - **Patch Compliance Rate:** % of endpoints at or above current patch level as of report date

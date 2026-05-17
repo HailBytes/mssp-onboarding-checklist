@@ -2,7 +2,7 @@
 
 > **Decision type:** Foundational infrastructure and delivery model — high switching cost, get this right early
 > **Audience:** MSSP owners and technical leads making or revisiting the build vs. buy decision
-> **Last reviewed:** 2025
+> **Last reviewed:** Q2 2025
 
 ---
 
@@ -22,13 +22,13 @@ This guide won't tell you there's a universal right answer. There isn't. But it 
 
 | Platform | Pricing Model | Realistic Annual Cost (20-client MSSP) |
 |----------|---------------|----------------------------------------|
-| Splunk (Cloud) | GB/day ingestion | $80,000–$200,000+ depending on log volume |
+| Splunk (Cloud) | GB/day ingestion (Cisco acquisition 2024 — verify current pricing model) | $80,000–$200,000+ depending on log volume |
 | Microsoft Sentinel | GB/day + compute | $40,000–$120,000 (highly variable) |
 | Elastic (SIEM) | Node/compute-based | $30,000–$80,000 before storage costs |
 | Wazuh (OSS) | Free software | $10,000–$30,000 in infrastructure + management |
 | LogRhythm / QRadar | Per-EPS tiers | $60,000–$150,000 for MSSP-tier licensing |
 
-> These are directional estimates, not quotes. Your log volume, client mix, and data retention requirements will move these numbers significantly. Get actual quotes from 3 vendors with your real expected log volumes before budgeting.
+> These are directional estimates, not quotes. Your log volume, client mix, and data retention requirements will move these numbers significantly. Get actual quotes from 3 vendors with your real expected log volumes before budgeting. Splunk's pricing model changed following its 2024 Cisco acquisition — confirm current terms directly before using these figures in any budget model.
 
 ### People
 

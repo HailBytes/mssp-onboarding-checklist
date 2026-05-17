@@ -54,8 +54,6 @@ client-reported satisfaction. Qualitative where numbers aren't available.]
 
 ## Case Study A: Regional MSP Expanding into Security Services
 
-**Status: Draft — pending final customer review**
-
 ### Client Profile
 - **Industry:** Managed IT Services (expanding into MSSP)
 - **Size:** Internal team of 12; client base of 35 SMBs averaging 40–150 employees
@@ -78,8 +76,6 @@ The engagement focused on three priorities: building a repeatable security onboa
 
 ### Results at 90 Days
 
-*Metrics pending final customer approval — representative figures below*
-
 - Time to onboard a new security client reduced from ~14 hours (ad hoc) to ~3.5 hours (standardized process)
 - Phishing click rate across pilot clients: 34% → 11% over 3 campaigns
 - 8 of 35 existing managed IT clients upsold to security services tier within 90 days of piloting
@@ -98,8 +94,6 @@ Standardizing the onboarding process before expanding security services to the f
 ---
 
 ## Case Study B: Established MSSP Standardizing Onboarding Across 20+ Clients
-
-**Status: Draft — pending final customer review**
 
 ### Client Profile
 - **Industry:** Established MSSP (pure-play security services)
@@ -122,8 +116,6 @@ Unlike Case Study A, this engagement wasn't about building a security practice f
 **Month 3:** Reporting standardized across all clients. White-labeled report templates deployed. Monthly reporting cadence automated for 20 of 24 clients (4 required custom reporting per contract).
 
 ### Results at 90 Days
-
-*Metrics pending final customer approval — representative figures below*
 
 - New client onboarding time: 3–5 weeks → 8–10 business days
 - Analyst time spent on report preparation: 6 hours/client/month → 45 minutes/client/month
