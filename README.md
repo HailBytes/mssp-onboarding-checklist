@@ -2,7 +2,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **HailBytes MSSP Program** | [ASM for MSSPs →](https://hailbytes.com/mssp) | [SAT for MSSPs →](https://hailbytes.com/mssp) | [Book a demo →](https://hailbytes.com/demo)
+> **HailBytes MSSP Program** | [ASM for MSSPs →](https://hailbytes.com/asm-for-mssps) | [SAT for MSSPs →](https://hailbytes.com/sat-for-mssps) | [Book a demo →](https://hailbytes.com/demo)
 
 ---
 
@@ -85,20 +85,13 @@ In practice:
 
 The checklists in this repo were built around how HailBytes ASM and SAT are deployed. If you're using HailBytes, the steps map directly. If you're not, they're still useful — expect some translation.
 
-👉 [HailBytes MSSP Program](https://hailbytes.com/mssp)
-👉 [Book a demo](https://hailbytes.com/demo)
+[HailBytes MSSP Program →](https://hailbytes.com/mssp) | [Book a demo →](https://hailbytes.com/demo)
 
 ---
 
 ## Contributing
 
-PRs are welcome. Editorial bar:
-- **Practitioner-first.** If it reads like a vendor brochure, it won't merge.
-- **Honest about tradeoffs.** Don't recommend without acknowledging downsides.
-- **Opinionated but not dogmatic.** Take a position. Explain why.
-- **Useful over comprehensive.** A tight 10-item checklist beats a 60-item one nobody finishes.
-
-Open an issue before a large PR that changes the repo structure.
+PRs are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full editorial bar and process. The short version: practitioner-first, honest about tradeoffs, useful over comprehensive. Open an issue before a large PR that changes the repo structure.
 
 ---
 
