@@ -77,7 +77,7 @@
 ## Policy & Compliance Review
 
 - [ ] Collect existing security policies: AUP, IR plan, password policy, BYOD policy
-- [ ] Identify applicable compliance frameworks: SOC 2, HIPAA, PCI, CMMC, state privacy laws
+- [ ] Identify applicable compliance frameworks: SOC 2, HIPAA, PCI, CMMC, state privacy laws — if any apply, run the [compliance onboarding addendum](compliance-onboarding-addendum.md) alongside Week 2–4 checklists
 - [ ] Check for any active audits, assessments, or certification timelines
 - [ ] Note any past incidents or near-misses in the last 24 months
 - [ ] Identify security awareness training history: was it done? When? What platform?
