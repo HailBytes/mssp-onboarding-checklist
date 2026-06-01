@@ -150,6 +150,39 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+### 4.5 Business Email Compromise (BEC)
+
+**BEC types to identify immediately:**
+- **Payment redirect:** Attacker (via compromised or spoofed account) requests a change to banking details for a legitimate vendor or payroll
+- **CEO/executive fraud:** Impersonation of an executive requesting urgent wire transfer or gift card purchase
+- **Invoice fraud:** Fake invoice from a spoofed or lookalike vendor domain
+- **Payroll redirect:** Attacker impersonates an employee to redirect direct deposit to a new account
+
+**Immediate Actions:**
+1. Determine whether a payment has already been made — if yes, every minute matters. Proceed to step 2 immediately.
+2. **If payment was made:** Contact the client's bank immediately to initiate a wire recall. The FBI's Financial Fraud Kill Chain has a narrow window (often 24–48 hours). Notify FBI IC3 at [ic3.gov](https://ic3.gov) — IC3 can work with FinCEN to freeze funds in transit.
+3. Identify the attack vector:
+   - **Compromised internal account:** Run the credential compromise playbook (4.2) in parallel
+   - **Spoofed/lookalike domain:** Document the domain (e.g., `client-corp.com` vs. `c1ient-corp.com`), report it to the domain registrar for takedown
+4. Preserve evidence before taking any account action: export the full email thread with headers, document timestamps of all communications
+5. Check the compromised or targeted mailbox for inbox rules that forwarded replies to external addresses or deleted responses — attackers commonly hide their tracks this way
+6. Identify all employees who received or may have acted on the fraudulent request
+7. Notify the client's finance and accounting team: freeze any pending payments to the attacker-supplied account
+8. If a vendor was impersonated: notify that vendor — their own customers may be targeted with the same campaign
+
+**Do Not:**
+- Do not reply to or engage with the attacker email (you alert them that detection has occurred)
+- Do not delay bank notification to gather more evidence — wire recall windows close fast
+- Do not assume containment is complete after securing email access — check for BEC in other ongoing payment or payroll processes
+
+**Recovery:**
+- Confirm with finance whether any other payments are pending to attacker-supplied accounts and halt them
+- Implement or verify DMARC/DKIM/SPF enforcement to reduce spoofing risk
+- Enable mailbox audit logging if not already active — BEC attackers frequently return
+- Brief the finance and executive teams on BEC recognition: urgency, out-of-band contact requests, and banking change procedures should always be verified by phone using a known number
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
