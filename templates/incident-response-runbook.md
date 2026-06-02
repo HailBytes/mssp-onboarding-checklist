@@ -150,7 +150,48 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
-## Part 5 — Evidence Preservation
+### 4.5 Business Email Compromise (BEC)
+
+> **Why this is different from phishing:** BEC doesn't require malware or credential capture. The attacker sends a convincing fraudulent email — often from a lookalike domain, a compromised third-party account, or a legitimately compromised internal mailbox — to redirect a wire transfer, change payment instructions, or authorize a gift card purchase. Financial loss is the primary damage vector. Speed of response determines whether funds are recoverable.
+
+**Immediate Actions:**
+1. Determine the BEC variant — which type occurred? (See variants below.)
+2. **If a wire transfer was sent:** Call the sending bank immediately — do not wait to investigate. Request a SWIFT recall or wire reversal. The window for recovery closes within 24–72 hours.
+3. Contact the FBI Internet Crime Complaint Center ([ic3.gov](https://www.ic3.gov)) if the transfer amount warrants it — the FBI's Financial Fraud Kill Chain (FFKC) can freeze funds if notified quickly enough.
+4. Identify the email that initiated the fraud: header analysis, originating IP, spoofed vs. compromised account.
+5. Determine if the attacker still has access to any mailbox or system — check for forwarding rules, delegates, and OAuth grants on all accounts that handled the fraudulent email chain.
+6. Notify client finance team and legal counsel — this is a financial crime, not just a security event.
+7. Notify cyber insurance carrier — BEC is a covered event under most cyber policies; insurers have relationships with wire recovery firms.
+8. Preserve all emails in the chain: do not delete or move, as they are evidence.
+
+**BEC Variants:**
+
+| Variant | Description | Immediate Indicator |
+|---------|-------------|---------------------|
+| CEO/CFO Fraud | Attacker impersonates executive to pressure finance into unauthorized wire | Urgent wire request from "CEO" with reply-to on lookalike domain |
+| Vendor Invoice Fraud | Attacker intercepts or impersonates vendor to change payment account details | Vendor payment instruction change received by email |
+| Payroll Diversion | Attacker impersonates employee to redirect direct deposit to attacker account | HR receives direct deposit change request via email |
+| Attorney/Legal Impersonation | Attacker impersonates law firm during real estate transaction or M&A | Settlement funds wired to attacker-controlled account |
+| Account Compromise BEC | Attacker uses a legitimately compromised mailbox to send fraud requests internally or to vendors | Legitimate email account sending anomalous financial requests |
+
+**For Account Compromise BEC (variant 5):**
+- Follow the 4.2 Credential Compromise playbook simultaneously.
+- Review all emails sent from the compromised account during the access window — assume every outbound financial communication is suspect.
+- Notify all vendors and contacts who received email from the compromised account.
+
+**Do Not:**
+- Do not notify the attacker by replying to the fraudulent email thread.
+- Do not delay the bank call to complete an internal investigation — every minute matters for fund recovery.
+- Do not allow the compromised email thread to be deleted before forensic capture.
+
+**Wire Recovery Checklist (time-critical):**
+- [ ] Sending bank notified — request for recall or reversal submitted (target: within 1 hour of discovery)
+- [ ] Receiving bank identified — provide to sending bank for freeze request
+- [ ] FBI IC3 complaint filed at ic3.gov — include: amount, sending/receiving bank details, date/time of transfer
+- [ ] Cyber insurance carrier notified
+- [ ] FinCEN SAR filing confirmed with client legal (required for financial institutions; best practice for all)
+
+---
 
 _Before taking containment action that modifies system state:_
 
