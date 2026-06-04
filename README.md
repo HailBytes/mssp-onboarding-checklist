@@ -36,6 +36,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 | [week-4-reporting-cadence.md](checklists/week-4-reporting-cadence.md) | Week 4 — Reporting setup, SLAs, client handoff |
 | [ongoing-monthly-cadence.md](checklists/ongoing-monthly-cadence.md) | Ongoing — Monthly operations and QBR prep |
 | [compliance-onboarding-addendum.md](checklists/compliance-onboarding-addendum.md) | Addendum — HIPAA, PCI-DSS, SOC 2, CMMC, GDPR steps when compliance is in scope |
+| [client-offboarding.md](checklists/client-offboarding.md) | Offboarding — Access revocation, tool removal, data transfer, compliance termination |
 
 ### 📄 Templates (`/templates/`)
 
