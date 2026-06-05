@@ -1,0 +1,35 @@
+name: Validate Documentation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-links:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'no'
+          config-file: '.mlc_config.json'
+          folder-path: '.'
+          file-extension: '.md'
+
+  check-placeholders:
+    name: Warn on Unfilled Placeholders
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: List files with template placeholders
+        run: |
+          echo "=== Files containing template placeholders ==="
+          grep -rl '\[YOUR \|\[CLIENT\|\[COMPANY\|\[DATE]\|\[NAME]\|\[PHONE]\|\[EMAIL]\|\[INSERT' \
+            --include="*.md" . || echo "None found"
+          echo ""
+          echo "Run: grep -rn '\[' --include='*.md' . | grep -v '^\[' to review all placeholders before client delivery."
