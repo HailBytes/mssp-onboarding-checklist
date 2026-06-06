@@ -29,6 +29,8 @@
 
 **How to classify when unsure:** Escalate up, not down. It costs less to stand down a P1 response than to treat a P1 as a P2.
 
+> **Staffing caveat:** Response targets above assume 24/7 on-call coverage with at least one analyst always reachable. If your team operates on business-hours coverage only, or you have fewer than three people sharing on-call rotation, **revise these windows before sharing this runbook with clients or inserting them into a contract.** Committing in writing to a 15-minute P1 response you cannot consistently meet creates contractual and professional-liability exposure. Adjust to what your team can actually sustain — e.g., "response within 1 business hour for P1 during business hours; on-call escalation best-effort after hours" — and document that clearly in the MSA and this runbook.
+
 ---
 
 ## Part 2 — Initial Triage Checklist
@@ -191,7 +193,7 @@ Incident type: [type]
 Affected systems: [list]
 Current status: [Contained / Investigating / Active]
 
-We are actively responding. [MSSP Lead Name] will call you within 15 minutes.
+We are actively responding. [MSSP Lead Name] will call you within [ADJUST: 15 minutes assumes 24/7 on-call — replace with your actual commitment, e.g., "30 minutes" or "within 1 hour during business hours"].
 
 Please do not take any action on the affected systems until we've spoken.
 
