@@ -1,0 +1,23 @@
+# Markdownlint configuration
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+default: true
+
+# Allow varied heading levels (repo uses H1 per file, H2/H3 for sections)
+MD001: false
+
+# Allow inline HTML (used in some table cells)
+MD033: false
+
+# Allow long lines — practitioner checklists have unavoidably long table rows
+MD013:
+  line_length: 200
+  tables: false
+  code_blocks: false
+
+# Allow duplicate headings across different files
+MD024:
+  siblings_only: true
+
+# Allow raw URLs in link-check section references
+MD034: false
