@@ -150,6 +150,55 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+### 4.5 Business Email Compromise (BEC) / Wire Transfer Fraud
+
+> **Time is the variable.** Banks can recall wire transfers within hours of initiation. Every minute spent investigating before calling the bank is a minute the money is moving. Call the bank first, investigate second.
+
+**Types of BEC this playbook covers:**
+- Wire transfer fraud: attacker impersonates executive or vendor to redirect payment
+- Payroll diversion: attacker changes direct deposit details for an employee
+- Gift card scams: attacker impersonates executive, requests gift card purchase and code
+- Vendor email compromise: attacker compromises a vendor's email and intercepts legitimate invoices
+
+**Immediate Actions (time-ordered — do not reorder):**
+
+1. **Call the sending bank within the first 30 minutes** — not email, call. Request a wire recall or payment reversal. Provide: transaction amount, date/time, receiving account details, beneficiary name. Ask for a SWIFT gpi recall if international. The bank needs this initiated same-day, ideally within hours.
+2. **Call the receiving bank** — provide the same information. Some banks will freeze the account while the recall is processed.
+3. **Notify client leadership and legal counsel immediately** — wire fraud almost always requires executive involvement and may require law enforcement notification.
+4. **File an IC3 complaint** at ic3.gov — the FBI's Internet Crime Complaint Center coordinates with FinCEN to assist in recovery. Same-day filing significantly improves recovery odds.
+5. **File a FinCEN complaint if over $50,000** — FinCEN has a Financial Fraud Kill Chain (FFKC) that can freeze funds in transit. Contact via 1-800-CALL-FBI or directly through FinCEN.
+6. **Preserve the fraudulent email chain** — export raw headers, do not forward (preserves metadata). Screenshot the email thread that initiated the transfer.
+7. **Identify the compromised account or spoofed domain:**
+   - Check if a legitimate internal account was compromised (check send logs, login history, rules)
+   - Check if attacker used a lookalike domain (e.g., `vendor-co.com` vs `vendor.co.com`)
+8. **Check for mailbox manipulation:** forwarding rules, inbox rules that deleted or moved original messages, sent-item deletions.
+9. **Identify all employees who received or acted on fraudulent communications** — payroll diversion may affect multiple employees; gift card scams may have multiple victims.
+10. **Notify cyber insurance carrier** — BEC is a covered event under most cyber policies; early notification is required.
+
+**For Payroll Diversion Specifically:**
+- Contact HR and payroll processor immediately to reverse or hold the misdirected payment
+- Identify how long the diverted routing was in place — multiple pay periods may be affected
+- Verify all employee direct deposit accounts are legitimate, not just the flagged one
+
+**Do Not:**
+- Do not attempt to contact the attacker or "play along" — this rarely recovers funds and creates legal exposure
+- Do not delete or alter any email evidence before forensic preservation
+- Do not assume the compromised account is the only vector — attackers often pivot to other accounts
+
+**Recovery:**
+- Remediate the initial access: compromised account, email spoofing domain, or social engineering vector
+- If an internal account was compromised: full account compromise protocol from 4.2
+- If a spoofed domain was used: request DMARC enforcement review, consider domain monitoring/blocking
+- Add the fraudulent accounts and domains to email gateway blocklists
+- Brief all employees who handle financial requests on BEC indicators — one incident often precedes additional attempts
+
+**Regulatory Considerations:**
+- If employee PII was accessed as part of the compromise, state breach notification laws may apply
+- If PCI-scoped systems were accessed, notify per compliance addendum
+- Document all recovery actions and bank communications for insurance claim
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
