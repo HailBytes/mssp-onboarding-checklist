@@ -150,6 +150,48 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+### 4.5 Business Email Compromise (BEC)
+
+**What this is:** BEC is a targeted attack where an attacker impersonates a trusted party — executive, vendor, supplier — to redirect wire transfers, change payment details, or extract sensitive data. Unlike phishing, BEC often involves no malware: just social engineering and email manipulation. It is consistently among the highest-dollar cybercrime categories and is frequently underreported because victims are reluctant to disclose financial losses.
+
+**BEC vectors — determine which applies before acting:**
+
+- **Compromised internal account** — attacker accessed a real executive or finance mailbox (leads to playbook 4.2 — run in parallel)
+- **Domain spoofing / lookalike** — no account compromise; attacker registered a lookalike domain (e.g., `vendor-co.com` impersonating `vendorco.com`)
+- **Vendor email compromise** — attacker compromised a legitimate vendor's mailbox and targeted your client from a trusted address
+
+**Immediate Actions:**
+1. Identify the BEC type above — the response path differs significantly by vector.
+2. If an internal account was compromised: follow playbook 4.2 simultaneously with steps below.
+3. Contact the targeted employee(s) immediately — determine whether any wire transfer, payment detail change, or data request was already acted on.
+4. **If a wire transfer was initiated: call the sending bank immediately.** The FBI's IC3 Financial Fraud Kill Chain can recover funds if notified within 24–72 hours of transfer. Every hour matters — do not wait for the post-incident review.
+5. If a payment change (ACH/banking details) was submitted: contact the client's finance team and their bank — request a recall or reversal while the window is open.
+6. Map the attack chain: who sent what, to whom, from which address, at what time? Pull email headers for spoofed messages.
+7. Check the email gateway for lookalike domains in recent inbound mail — search for domains resembling the client's own domain and key vendor domains.
+8. Block confirmed lookalike domains at the email gateway, DNS firewall, and web proxy.
+9. Notify the impersonated party (executive or vendor) through a verified out-of-band channel (phone number on file — not a reply to the suspicious email) so they can alert their own contacts.
+
+**If a Vendor Was Compromised (attacker in vendor's mailbox, not client's):**
+- All communications from that vendor email address during the compromise window should be treated as suspect.
+- Contact the vendor directly by phone using a number from your records — not from the email signature or a Google search (attacker may have poisoned those too).
+- Review all invoices and payment change requests received from that vendor in the past 30–90 days.
+- Confirm with the vendor which outbound communications are authentic before acting on any of them.
+
+**Do Not:**
+- Do not reply to the attacker's email thread — do not signal that the attack has been identified.
+- Do not wait to notify the bank — fund recovery windows close within 24–72 hours, sometimes faster.
+- Do not deprioritize BEC because no malware was detected. Financial exposure routinely exceeds ransomware events.
+- Do not assume a single employee was targeted — BEC campaigns often target multiple recipients simultaneously.
+
+**Recovery and Hardening:**
+- File an IC3 complaint at ic3.gov immediately for any completed wire fraud — this initiates the FBI Financial Fraud Kill Chain, the fastest domestic recovery path.
+- If DMARC is not enforced on the client's sending domains: implement it. DMARC with `p=quarantine` or `p=reject` prevents exact-domain spoofing. This is the single highest-leverage control against BEC.
+- Verify SPF and DKIM are correctly configured for all sending domains — DMARC is ineffective without both.
+- Establish a verbal callback policy for finance and AP: any payment detail change or new wire request received via email must be confirmed by phone to a number on file before processing.
+- Include BEC scenarios in the next SAT phishing simulation — invoice fraud and executive impersonation are the highest-ROI awareness topics for finance and admin staff.
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
