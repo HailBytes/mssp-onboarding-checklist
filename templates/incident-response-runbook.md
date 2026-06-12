@@ -150,6 +150,55 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+### 4.5 Business Email Compromise (BEC) / Wire Fraud
+
+**Definition:** An attacker — either through compromised email credentials or a spoofed/lookalike domain — impersonates an executive, vendor, or internal finance contact to redirect a payment, request a wire transfer, or change payment account details.
+
+> **Time-critical:** Wire recall windows close within 24–72 hours. Every hour of delay reduces the probability of fund recovery. Financial institution contact takes priority over internal investigation.
+
+**Immediate Actions:**
+1. Confirm a fraudulent payment instruction was issued — verify directly with the supposed sender via phone or in-person (not email).
+2. If a wire transfer or ACH payment has already been initiated:
+   - Call the sending bank's wire transfer department **immediately** — ask to place a SWIFT recall or reverse the ACH.
+   - Reference the FBI's **Financial Fraud Kill Chain (FFKC)**: notify the FBI's IC3 at [ic3.gov](https://www.ic3.gov) so they can coordinate with FinCEN to flag the receiving account.
+   - Provide the sending bank: beneficiary name, beneficiary bank, account number, routing number, transfer amount, and transfer date/time.
+3. If the fraudulent instruction has not yet been executed — hold the payment and do not execute it under any circumstances until the request is verified through a confirmed out-of-band channel.
+4. Identify the attack vector: was this a compromised account (internal actor's mailbox), a spoofed domain, or a lookalike domain? The remediation path differs for each.
+5. Preserve the fraudulent email in full (including full headers) — do not delete it. Export to PDF and raw `.eml` format.
+6. Identify who received the fraudulent email and who else may have acted on it.
+7. Notify client executive sponsor and legal counsel immediately.
+8. Notify cyber insurance carrier — BEC/wire fraud is typically a covered event, and carriers may have their own fraud recovery contacts.
+
+**Compromised Internal Mailbox (attacker used a real employee account):**
+- Follow the Credential Compromise playbook (4.2) in parallel.
+- Check the compromised mailbox for: forwarding rules, auto-replies, deleted items (search for the fraud thread), inbox rules that hid replies from the legitimate user.
+- Review the sent items folder for how long the attacker had access and who else they contacted.
+- Check for attacker-set auto-forwards that will continue to exfiltrate email even after the initial fraud is stopped.
+
+**Spoofed / Lookalike Domain (attacker used an external fraudulent domain):**
+- Document the fraudulent domain exactly — this is evidence for FBI IC3 and the fraud recovery process.
+- Confirm the client's own DMARC policy: a `p=reject` DMARC policy would have blocked spoofing of their own domain. If not in place, add it to the remediation tracker.
+- Check if the lookalike domain is registered — if so, report to the registrar for takedown.
+
+**Do Not:**
+- Do not contact the fraudulent vendor/payee account to notify them — you may alert the attacker and accelerate fund movement.
+- Do not send any additional payments while the investigation is active.
+- Do not modify or delete the email thread containing the fraudulent instructions — it is evidence.
+
+**Communication Note:**
+- BEC often targets finance and executives who may be embarrassed about the fraud. Approach internal communication with this in mind — the goal is swift recovery, not blame assignment.
+- Notify only those who need to know until the scope is understood. Premature broad disclosure can complicate law enforcement coordination.
+
+**Key External Contacts:**
+| Contact | Purpose | How to Reach |
+|---------|---------|--------------|
+| Sending bank wire department | SWIFT recall / ACH reversal | Direct phone — not the main branch number |
+| FBI IC3 | FFKC activation, FinCEN coordination | [ic3.gov](https://www.ic3.gov) — file a complaint immediately |
+| Cyber insurance carrier | Coverage notification, fraud recovery support | Policy / broker contact (see escalation path) |
+| Client legal counsel | Regulatory reporting, litigation hold | See Part 3 escalation path |
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
