@@ -144,9 +144,42 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 2. Treat every credential submission as a confirmed compromise — assume the credentials are in attacker hands.
 3. For each affected user: disable account, force session revocation, reset credentials, re-enroll MFA.
 4. Check for immediate attacker activity on affected accounts: logins, mail forwarding rules, external emails sent.
-5. Check for BEC indicators: did any affected account send wire transfer requests, gift card requests, or changed payment information?
+5. Check for BEC indicators: did any affected account send wire transfer requests, gift card requests, or changed payment information? If yes, escalate immediately to section 4.5.
 6. Notify client IT lead and brief them on affected user count.
 7. Send client-facing communication to affected users (see Part 5).
+
+---
+
+### 4.5 Business Email Compromise (BEC) / Wire Fraud
+
+> BEC is distinct from credential compromise. The goal is financial fraud — not persistent access. Time is the critical variable: wire transfers can sometimes be recalled if the bank is notified within hours. Everything else is secondary until the financial exposure is contained.
+
+**Immediate Actions:**
+1. **Determine what was requested or sent.** Look for: outbound wire transfer instructions, vendor payment detail changes, payroll direct deposit changes, gift card purchase requests. A single fraudulent wire can exceed an entire year's MSSP contract value for your client.
+2. **Notify the client's finance or accounting team immediately** — before investigation is complete. If a wire was initiated, they need to call their bank now. Every minute counts.
+3. **Contact the sending bank directly** — if the wire transferred within the last 24–72 hours, the bank may be able to initiate a recall via SWIFT or FinCEN. The client needs to do this; the MSSP should be on the call.
+4. **File an FBI IC3 report** (ic3.gov) — the FBI's Internet Crime Complaint Center has a Financial Fraud Kill Chain program that can claw back international wires when contacted quickly.
+5. **Identify the compromised account(s)** — BEC usually involves mailbox access (inbox rules to hide replies, account takeover) or domain spoofing. Determine which occurred.
+6. **Search for inbox manipulation rules** on the compromised account — attackers commonly create rules to move replies to subfolders or delete them to hide the fraud while it's in progress. Check M365: `Get-InboxRule -Mailbox <user>` or the Exchange admin center.
+7. **Audit for domain lookalikes** — check if the attacker registered a lookalike domain (e.g., `cl1ent-company.com` vs `client-company.com`) to intercept replies.
+8. **Preserve all email evidence before any cleanup** — headers, sent items, deleted items, and audit logs. These are needed for insurance claims and law enforcement.
+9. **Notify cyber insurance carrier** — BEC/wire fraud is a covered event under most cyber policies; the carrier may have an emergency response team experienced in financial recovery.
+
+**For Payroll Diversion Specifically:**
+- Notify payroll provider and HR immediately — a payroll direct deposit change submitted before cutoff may not have processed yet.
+- Confirm the employee actually submitted the change request by calling them directly (not replying to the email that triggered the concern).
+- Most payroll providers can reverse a direct deposit if notified before end of processing day.
+
+**Do Not:**
+- Do not reply to or engage with the attacker's email — you may tip them off before the bank recall is initiated.
+- Do not wait for a complete forensic picture before notifying the bank. Start the recall process while investigating.
+- Do not assume a single compromised account means a single BEC attempt — attackers typically run multiple fraud attempts concurrently from a compromised mailbox.
+
+**Recovery:**
+- Remediate the initial access vector (compromised credentials, phishing link, or email forwarding misconfiguration).
+- Remove any inbox rules or forwarding addresses added by the attacker.
+- Notify any vendors whose payment details were changed — confirm correct banking information out-of-band (phone call to a known number, not email).
+- Brief the client on recognizing BEC in future: verify payment or banking change requests via a second communication channel; never over email alone.
 
 ---
 
