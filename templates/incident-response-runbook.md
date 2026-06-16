@@ -22,7 +22,7 @@
 
 | Priority | Definition | Examples | Response Target |
 |----------|-----------|----------|-----------------|
-| **P1 — Critical** | Active breach or imminent material risk | Active ransomware, confirmed data exfil, account takeover of admin credentials | Immediate — page on-call, begin triage within 15 min |
+| **P1 — Critical** | Active breach or imminent material risk | Active ransomware, confirmed data exfil, account takeover of admin credentials, BEC wire fraud (payment sent or pending) | Immediate — page on-call, begin triage within 15 min |
 | **P2 — High** | Significant threat requiring urgent attention | Confirmed malware on endpoint, credential stuffing attack, phishing with credential capture | Response within 2 hours |
 | **P3 — Medium** | Security event requiring investigation | Suspicious login patterns, failed MFA flood, anomalous network traffic | Response within 4 business hours |
 | **P4 — Low** | Informational or low-risk event | Policy violation, isolated malware detection (quarantined), failed external scan | Log and review in standard ticket queue |
@@ -150,6 +150,40 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+### 4.5 Business Email Compromise (BEC) / Wire Fraud
+
+BEC is distinct from credential phishing: the attacker either compromises a legitimate email account or spoofs one to manipulate a financial transaction. The goal is money, not data. Common scenarios: vendor invoice fraud, CEO fraud ("wire this now"), payroll diversion, and real estate closing wire redirect.
+
+**Classify immediately:** If a wire has been sent or approved, this is **P1**. Financial recovery windows are measured in hours.
+
+**Immediate Actions:**
+1. Determine if a fraudulent payment was sent, approved, or is still pending.
+2. If a wire was sent: **call the client's bank fraud line right now — do not email.** The Financial Fraud Kill Chain (FFKC) can sometimes recall wires, but the window closes fast (domestic: 24 hours; international: 72 hours).
+3. Identify the attack vector: was a real account compromised, or was the sender domain spoofed?
+4. **If a real account was compromised:** disable the account, revoke active sessions, and work through the full 4.2 Account Takeover playbook.
+5. **If the domain was spoofed (no account access):** check the DMARC policy for the impersonated domain — a `p=reject` policy would have blocked delivery. Remediate if absent.
+6. Search for other recent emails sent from the compromised or spoofed address — BEC actors routinely target multiple contacts in parallel.
+7. Alert the client finance/AP team: freeze all pending outbound payment requests until verbally verified (see communication template in section 6.5).
+8. Check for payroll diversion: any direct deposit change requests submitted in the past 30 days.
+9. Notify client management, legal counsel, and cyber insurance carrier.
+10. File an FBI IC3 complaint at ic3.gov — required to access the FBI's wire recovery program.
+
+**Financial Recovery — Time Is the Variable:**
+
+| Transfer Type | Recovery Path | Window |
+|--------------|---------------|--------|
+| Domestic wire | Call sending bank fraud line → they contact receiving bank to hold funds | 24 hours |
+| International wire | FBI IC3 FFKC request + sending bank call | 72 hours (drops sharply after) |
+| ACH / direct deposit | NACHA reversal through originating bank | 5 business days |
+| Credit card | Chargeback through card issuer | 60–120 days (easiest recovery) |
+
+**Do Not:**
+- Do not reply to, forward, or engage with the fraudulent email — the attacker may still be monitoring the mailbox.
+- Do not let finance verify the payment by calling the number in the fraudulent email. It goes to the attacker. Use a phone number from a prior known-good invoice or your vendor directory.
+- Do not delay the bank call for internal analysis. Both can happen in parallel — the bank call cannot wait.
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
@@ -239,6 +273,33 @@ We'll share more information as our investigation progresses.
 
 [Sender Name]
 [IT / Security Contact]
+```
+
+### 6.5 Finance Team Alert — BEC / Wire Fraud (Client to Send)
+
+```
+Subject: URGENT — Payment Security Alert — Action Required
+
+[Finance / AP Team],
+
+We are investigating a potential Business Email Compromise (BEC) incident.
+Until further notice, apply the following to ALL payment requests:
+
+1. Do NOT process any payment instruction received by email without first 
+   verbally confirming it with the requestor — use a phone number from your 
+   existing vendor/employee records, NOT a number provided in the email.
+
+2. If you recently processed a payment based solely on an email instruction 
+   (especially any change to bank account, routing number, or wire details), 
+   contact [IT/Security Contact] immediately.
+
+3. Do not reply to, forward, or engage with any suspicious email. 
+   Forward the email as an attachment to [IT/Security Contact] instead.
+
+IT and Security are actively investigating. We will provide an update by [TIME].
+
+[Sender Name]
+[IT / Security Contact — phone]
 ```
 
 ---
