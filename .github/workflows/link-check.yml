@@ -1,0 +1,34 @@
+name: Check Links
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.md'
+  schedule:
+    # Weekly on Mondays — catches externally broken links (regulatory sites, vendor pages)
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links in Markdown files
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --verbose
+            --no-progress
+            --exclude-mail
+            --timeout 30
+            --max-retries 3
+            --exclude 'https://hailbytes\.com/demo'
+            '**/*.md'
+          fail: true
