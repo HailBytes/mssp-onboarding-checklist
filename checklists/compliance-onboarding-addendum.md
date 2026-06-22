@@ -1,6 +1,6 @@
 # Compliance Onboarding Addendum
 
-> **When to use this:** When Section 6 of the [discovery questionnaire](../templates/discovery-questionnaire.md) identifies one or more regulatory frameworks — HIPAA, PCI-DSS, SOC 2, CMMC, or GDPR — run the relevant section(s) of this addendum alongside the standard Week 1–4 checklists. These are the steps that change when compliance is in scope.
+> **When to use this:** When Section 6 of the [discovery questionnaire](../templates/discovery-questionnaire.md) identifies one or more regulatory frameworks — HIPAA, PCI-DSS, SOC 2, CMMC, GDPR, or NIS2 — run the relevant section(s) of this addendum alongside the standard Week 1–4 checklists. These are the steps that change when compliance is in scope.
 
 > **This is not a compliance audit checklist.** It's the MSSP operational steps — BAAs, scope documentation, evidence workflows, data handling adjustments — that need to happen during onboarding to avoid being a compliance liability for your client.
 
@@ -167,6 +167,90 @@
 
 ---
 
+## NIS2 (EU Network and Information Security Directive 2)
+
+**Trigger:** Client is a medium or large enterprise (50+ employees or €10M+ annual turnover) operating in an EU member state within a covered sector — or provides services to such an entity where disruption would have cross-border impact. NIS2 applies regardless of where the MSSP is located; what matters is where the client operates and whether they qualify as an "essential" or "important" entity.
+
+**Covered sectors (essential entities — higher scrutiny):** Energy, transport, banking, financial market infrastructure, health, drinking water, wastewater, digital infrastructure, ICT service management (B2B — this includes most MSSPs), public administration, space.
+
+**Covered sectors (important entities — same requirements, lighter enforcement):** Postal/courier, waste management, chemicals, food production/processing/distribution, manufacturing (medical devices, electronics, machinery, motor vehicles), digital providers (online marketplaces, search engines, social networks), research.
+
+> **MSSP self-check:** ICT service management (B2B) is an **essential entity** sector under NIS2. If your MSSP has 50+ employees or €10M+ revenue and operates within the EU, you likely have your own NIS2 obligations independent of any client engagement. Confirm your own classification with legal counsel before advising clients on theirs.
+
+---
+
+### Entity Classification
+
+- [ ] Confirm whether the client qualifies as an **essential entity** or **important entity** (sector + size threshold — obtain this from legal counsel or the national competent authority's published guidance)
+- [ ] Confirm the member state(s) where the client has its main establishment — this determines which national competent authority (NCA) oversees them
+- [ ] If the client operates in multiple EU member states: identify the lead NCA (determined by location of main establishment) and any other relevant NCAs
+- [ ] Check whether any small-entity exemption applies — entities below the size thresholds are generally exempt unless they are a sole provider in their sector or their disruption would have significant cross-border impact
+
+### Registration
+
+- [ ] Confirm whether the client has registered (or is required to register) with their national competent authority — most essential and important entities must self-register; deadlines vary by member state
+- [ ] Confirm registration includes: entity name and sector classification, primary contact details, IP address ranges and domain names (for digital infrastructure entities), and list of member states where the client provides services
+- [ ] Note: failure to register is itself a compliance violation in most member states
+
+### Article 21 Security Measures
+
+NIS2 Article 21 mandates ten categories of cybersecurity risk management measures. MSSP deployments should directly support or document coverage for each.
+
+- [ ] **Risk analysis and information system security policies:** Confirm client has documented risk management policies; MSSP discovery work (Week 1–2) maps to this requirement — ensure outputs are documented and retained
+- [ ] **Incident handling:** Verify IR runbook is in place and reflects NIS2 notification timelines (see below) — the standard IR template requires updating for NIS2 before it is live for EU clients
+- [ ] **Business continuity, backup management, and disaster recovery:** Confirm backup strategy is documented with tested recovery procedures; business continuity plan exists and is reviewed at least annually
+- [ ] **Supply chain security:** Document the security posture of all suppliers with access to the client environment — this includes the MSSP itself; clients will likely request the MSSP's own security documentation (certifications, penetration test results, security policies) as evidence of supply chain due diligence
+- [ ] **Security in network/system acquisition and development:** Confirm client has a process for security requirements in procurement and software development; MSSP tooling deployed into the environment should have documented security properties
+- [ ] **Effectiveness measurement:** Confirm there is a process to assess whether security controls are working — this can be supported by MSSP monthly reports, ASM findings trends, and phishing simulation improvement metrics
+- [ ] **Cyber hygiene and security training:** Confirm all staff complete baseline cybersecurity awareness training; NIS2 explicitly requires training for **management and governing bodies** — this is often the gap
+- [ ] **Cryptography and encryption policies:** Confirm policies exist for use of encryption at rest and in transit; confirm MSSP-managed tooling applies encryption consistent with the policy
+- [ ] **Human resources security, access control, and asset management:** Confirm joiners/movers/leavers process is documented; access reviews are scheduled; asset inventory is maintained — Week 1 discovery work directly supports this
+- [ ] **Multi-factor authentication and secure communications:** Confirm MFA is enforced for all access to network and information systems — NIS2 Article 21(2)(j) explicitly requires MFA or continuous authentication; document any exceptions with compensating controls
+
+### Incident Reporting (Article 23)
+
+NIS2 incident reporting timelines are among the strictest of any framework and have three stages:
+
+| Stage | Deadline | Content Required |
+|-------|----------|-----------------|
+| Early warning | **24 hours** after becoming aware | Incident occurred, suspected cause (attack/human error/etc.), initial severity assessment |
+| Incident notification | **72 hours** after becoming aware | Updated information, initial assessment of impact and severity, indicators of compromise where available |
+| Final report | **1 month** after incident notification | Full description, type of threat or root cause, applied and ongoing mitigation measures, cross-border impact if applicable |
+
+- [ ] Update IR runbook with NIS2 three-stage reporting timeline — the 24-hour early warning is the most operationally demanding; confirm the MSSP analyst escalation path can trigger this within business and out-of-hours scenarios
+- [ ] Identify the client's designated point of contact for NCA notifications — this is a named individual responsible for regulatory communication
+- [ ] Confirm the client has identified their lead NCA contact and submission method (most NCAs have an online portal or dedicated email for NIS2 notifications)
+- [ ] Confirm client knows: significant incidents affecting services they provide to other entities may also require notification to those recipients simultaneously with the NCA notification
+- [ ] For cross-border incidents (client operates in multiple EU member states): confirm process for notifying all relevant NCAs, not just the lead
+
+**Significance threshold for reporting:** An incident is "significant" under NIS2 if it has caused or is capable of causing: severe operational disruption; financial loss to the entity; or significant material or non-material damage to other persons. When uncertain, treat the incident as significant — the cost of an unnecessary early warning is negligible; the cost of missing the window is not.
+
+### Management Accountability
+
+NIS2 introduced personal liability for management bodies — a significant change from NIS1.
+
+- [ ] Brief client executive/board sponsor on NIS2 management obligations: governing bodies must approve cybersecurity risk management measures and oversee their implementation; they can be held personally liable for non-compliance
+- [ ] Confirm management-level cybersecurity training is scheduled — this is an explicit Article 21 requirement, not implied
+- [ ] Document that the client's management body has formally approved the security measures in place — board minutes or equivalent sign-off
+- [ ] Note: member states may require competent authorities to temporarily suspend a natural person from management functions in the case of repeated significant NIS2 violations
+
+### Supply Chain Obligations (MSSP-Specific)
+
+As a supplier to NIS2-covered clients, the MSSP is part of the client's supply chain security perimeter. Clients must assess and manage supplier risk under Article 21.
+
+- [ ] Anticipate and prepare for client requests for MSSP security documentation: certifications (ISO 27001, SOC 2), penetration test results, vulnerability disclosure policy, incident response procedures
+- [ ] Confirm the services agreement or MSA addresses NIS2 supply chain requirements: security obligations, incident notification to the client, right-to-audit provisions
+- [ ] If MSSP has its own NIS2 obligations (likely for EU-based MSSPs in ICT service management): confirm MSSP's own compliance posture is documented and can be shared with clients on request
+- [ ] Document which MSSP personnel have privileged access to client systems — clients' supply chain risk assessments will ask this
+
+### Ongoing Operations
+
+- [ ] Include NIS2 compliance posture in QBR agenda: Article 21 control coverage, any open gaps, incident log review
+- [ ] Track member state implementation divergence — NIS2 is an EU directive, and member states have implemented it with varying national-level requirements; clients operating in multiple EU countries may face different specific obligations per country
+- [ ] Monitor ENISA (EU Agency for Cybersecurity) guidance — sector-specific technical guidance on Article 21 implementation is being published on a rolling basis
+
+---
+
 ## Multi-Framework Clients
 
 When a client is subject to multiple frameworks (e.g., a healthcare payments processor subject to both HIPAA and PCI-DSS):
@@ -175,6 +259,8 @@ When a client is subject to multiple frameworks (e.g., a healthcare payments pro
 - Flag overlapping controls — most controls satisfy multiple frameworks simultaneously (MFA, access logging, encryption)
 - Build a unified control matrix for the client showing which MSSP activities map to which framework requirements
 - In QBRs, present compliance posture by framework so the client's compliance team can track against each certification separately
+
+**NIS2 + GDPR is a common combination** for EU clients. The Article 21 security measures and the 72-hour incident notification timelines align closely — an incident that triggers GDPR notification will almost certainly also trigger NIS2 notification, and may need to go to two different authorities (the data protection authority for GDPR; the NCA for NIS2). Build a single escalation path that satisfies both simultaneously rather than running two separate workflows.
 
 ---
 
@@ -194,3 +280,12 @@ The standard IR runbook has no regulatory notification steps. GDPR's 72-hour win
 
 **❌ Letting compliance gaps drive scope creep.**
 Discovery will surface compliance gaps — missing DMARC enforcement, unencrypted PHI in email, PCI systems on a flat network. These are findings to document and prioritize, not reasons to expand the engagement scope on the spot. Log them in the remediation tracker and discuss scope adjustments through the normal change process.
+
+**❌ Assuming NIS2 only applies to the client, not the MSSP.**
+ICT service management (B2B) is an essential entity sector under NIS2. A mid-sized MSSP operating in the EU may have its own NIS2 registration and Article 21 obligations independent of its clients. Confirm your own classification before advising clients — arriving at a client NIS2 gap analysis while your own compliance is incomplete is a credibility problem and a legal one.
+
+**❌ Treating NIS2's 24-hour early warning as a full incident notification.**
+The three-stage NIS2 reporting timeline is sequential — the 24-hour early warning is a low-information heads-up that an incident is occurring, not a full report. MSSPs often confuse the stages. Brief the client's NCA point of contact on the format difference: stage one buys you time; stage three is where the full analysis goes. Missing the 24-hour window because you were waiting for complete information is the failure mode to avoid.
+
+**❌ Overlooking NIS2 management training as a box to check.**
+NIS2 Article 21 explicitly requires members of the governing body to receive cybersecurity training — not just awareness that training happened, but their own participation. This is frequently skipped because executives assume IT handles it. If a significant incident occurs and the board cannot demonstrate they received training, this becomes a direct management liability item, not just a compliance finding.
