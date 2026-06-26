@@ -48,6 +48,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 | [monthly-status-report.md](templates/monthly-status-report.md) | Monthly client-facing report template |
 | [quarterly-business-review.md](templates/quarterly-business-review.md) | QBR document for CISO/VP-level audiences |
 | [incident-response-runbook.md](templates/incident-response-runbook.md) | IR runbook with escalation paths and comms templates |
+| [client-communication-emails.md](templates/client-communication-emails.md) | Ready-to-send email templates for each onboarding phase |
 
 ### 🛠️ Tooling Decisions (`/tooling-decisions/`)
 
