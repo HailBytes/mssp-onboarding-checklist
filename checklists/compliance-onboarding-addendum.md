@@ -1,7 +1,7 @@
 # Compliance Onboarding Addendum
 
 > **When to use this:** When Section 6 of the [discovery questionnaire](../templates/discovery-questionnaire.md) identifies one or more regulatory frameworks — HIPAA, PCI-DSS, SOC 2, CMMC, GDPR, or NIS2 — run the relevant section(s) of this addendum alongside the standard Week 1–4 checklists. These are the steps that change when compliance is in scope.
-
+>
 > **This is not a compliance audit checklist.** It's the MSSP operational steps — BAAs, scope documentation, evidence workflows, data handling adjustments — that need to happen during onboarding to avoid being a compliance liability for your client.
 
 ---

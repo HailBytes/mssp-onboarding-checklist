@@ -195,6 +195,7 @@ _Summary of IAM audit findings from Week 1._
 **EOL/Unsupported assets identified:** [List OS/software versions, e.g., "Windows Server 2012 R2 — 2 servers; Windows 7 — 1 endpoint; Adobe Acrobat XI — multiple endpoints"]
 
 **Priority patch targets:**
+
 1. [Specific asset — highest risk patch gap]
 2. [Specific asset]
 3. [Specific asset]

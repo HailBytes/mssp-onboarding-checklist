@@ -67,6 +67,7 @@
 | [Finding/action item] | 🔴 / 🟠 / 🟡 | In Progress / Blocked / Complete | [date] | [date] | [blocker or note] |
 
 **Items requiring client action this month:**
+
 - [ ] [Specific action, specific owner, specific date]
 - [ ] [Specific action, specific owner, specific date]
 
@@ -105,11 +106,13 @@
 ## Next Month Focus
 
 **MSSP Actions:**
+
 - [Planned activity — e.g., "Run Q3 phishing simulation with BEC template"]
 - [Planned activity — e.g., "Re-scan following remediation of Critical finding #1"]
 - [Planned activity — e.g., "Quarterly Business Review on [DATE]"]
 
 **Client Actions Required:**
+
 - [Item requiring client IT or management action, with deadline]
 - [Item requiring client IT or management action, with deadline]
 
@@ -124,12 +127,14 @@
 <!-- NOTE: If you are using HailBytes ASM and SAT, this data is exported directly from those platforms. Replace this line with your tooling if different. -->
 
 **Metric definitions:**
+
 - **Patch Compliance Rate:** % of endpoints at or above current patch level as of report date
 - **Phishing Click Rate:** % of targeted users who clicked a simulated phishing link this period
 - **Phishing Report Rate:** % of targeted users who reported the phishing simulation to IT/MSSP
 - **SAT Training Completion Rate:** % of assigned users who have completed their current training module
 
 **Finding severity definitions:**
+
 - 🔴 **Critical:** Immediate risk of breach or data exposure; requires remediation within 48 hours
 - 🟠 **High:** Significant risk; requires remediation within 10 business days
 - 🟡 **Medium:** Moderate risk; tracked and addressed within 30 days

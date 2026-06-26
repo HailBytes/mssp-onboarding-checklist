@@ -23,6 +23,7 @@ These are non-negotiable criteria. If a vendor can't clearly answer yes to all o
 ### 1. True Multi-Tenancy
 
 Not "you can create separate workspaces." True multi-tenant means:
+
 - Single login with role-based client scoping
 - Aggregate view across all clients AND per-client drill-down from the same interface
 - No shared data between tenants (compliance-critical for regulated-industry clients)
@@ -31,6 +32,7 @@ Not "you can create separate workspaces." True multi-tenant means:
 ### 2. MSSP-Appropriate Pricing Model
 
 Per-seat pricing is an MSSP margin killer. You need one of:
+
 - **Per-client flat rate** — predictable, scales with client count
 - **Per-asset tiers** — acceptable if thresholds are generous
 - **Revenue-share or reseller model** — workable if margins are clear upfront
@@ -40,6 +42,7 @@ What you cannot sustain: per-user, per-scan, or metered pricing that scales with
 ### 3. API Access (Full, Not Read-Only)
 
 Your PSA, SIEM, and reporting stack need to pull data without human intervention. Evaluate:
+
 - REST API with authentication scoped per tenant
 - Webhook support for real-time alerting
 - Export formats: JSON, CSV, STIX/TAXII for threat intel consumers
@@ -51,6 +54,7 @@ Your clients should see your brand, not your vendor's brand. Minimum: logo repla
 ### 5. Scan Frequency and Coverage
 
 Continuous monitoring ≠ weekly scans. Evaluate:
+
 - How frequently is asset discovery re-run?
 - What's the mean time between a new asset appearing and it showing up in the platform?
 - Coverage: domains, IPs, cloud assets, certificates, open ports, exposed services, dark web mentions
@@ -58,6 +62,7 @@ Continuous monitoring ≠ weekly scans. Evaluate:
 ### 6. Alert Quality (Signal vs. Noise Ratio)
 
 An ASM tool that fires 200 alerts per client per day is worse than no ASM tool — your analysts will tune it out. Evaluate:
+
 - Default alert tuning for MSSP deployments
 - Suppression and whitelisting controls at both the platform level and per-client level
 - Historical context on findings (is this new, or has it been open for 6 months?)
@@ -95,6 +100,7 @@ An ASM tool that fires 200 alerts per client per day is worse than no ASM tool �
 **The operational overhead difference is real.** MSSPs who switch to HailBytes ASM from an enterprise tool consistently report cutting their report preparation time by 60–70%. That's recoverable margin.
 
 **Where HailBytes ASM is not the right fit:**
+
 - If you manage a single large enterprise environment and don't need multi-tenancy
 - If your clients are exclusively Fortune 500 companies who already have their own ASM tooling and want you to use it
 - If you're building a fully custom internal ASM capability on top of raw scan data

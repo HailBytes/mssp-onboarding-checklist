@@ -83,6 +83,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 [HailBytes](https://hailbytes.com) builds ASM and SAT tooling **specifically for MSSPs** — not enterprise products retrofitted for the channel.
 
 In practice:
+
 - **Multi-tenant by default.** Manage all clients from one dashboard. No toggling between separate logins.
 - **Per-client reporting built in.** Each client gets their own view. You get the aggregate.
 - **No per-seat pricing.** Add a client — your ASM and SAT cost goes up by a flat, knowable amount.

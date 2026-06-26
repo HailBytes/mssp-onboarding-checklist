@@ -18,7 +18,7 @@ Each case study follows a consistent structure:
 
 ## Case Study Structure Template
 
-```
+```text
 ## Case Study [Letter]: [One-line client description]
 
 ### Client Profile
@@ -55,6 +55,7 @@ client-reported satisfaction. Qualitative where numbers aren't available.]
 ## Case Study A: Regional MSP Expanding into Security Services
 
 ### Client Profile
+
 - **Industry:** Managed IT Services (expanding into MSSP)
 - **Size:** Internal team of 12; client base of 35 SMBs averaging 40–150 employees
 - **Client count at engagement:** 35 existing managed IT clients; 0 dedicated security service clients
@@ -82,6 +83,7 @@ The engagement focused on three priorities: building a repeatable security onboa
 - Zero cross-client data incidents during tool migration
 
 ### Tools Used
+
 - ASM: HailBytes ASM
 - SAT: HailBytes SAT
 - SIEM/MDR: Huntress (MDR, resold)
@@ -89,6 +91,7 @@ The engagement focused on three priorities: building a repeatable security onboa
 - RMM: ConnectWise Automate
 
 ### Key Takeaway
+
 Standardizing the onboarding process before expanding security services to the full client base — rather than onboarding clients one-by-one and figuring it out as you go — was the difference between a sustainable security practice and a support ticket backlog.
 
 ---
@@ -96,6 +99,7 @@ Standardizing the onboarding process before expanding security services to the f
 ## Case Study B: Established MSSP Standardizing Onboarding Across 20+ Clients
 
 ### Client Profile
+
 - **Industry:** Established MSSP (pure-play security services)
 - **Size:** Internal team of 22; dedicated SOC of 6 analysts
 - **Client count at engagement:** 24 active clients across financial services, healthcare, and professional services
@@ -123,6 +127,7 @@ Unlike Case Study A, this engagement wasn't about building a security practice f
 - SOC analyst offboarding risk: client context now documented in standard format — new analyst ramp time reduced from ~2 weeks to ~4 days per inherited client
 
 ### Tools Used
+
 - ASM: HailBytes ASM (migrated from previous enterprise tool)
 - SAT: HailBytes SAT
 - SIEM: Elastic SIEM (self-managed) + Huntress MDR for 24/7 coverage
@@ -130,6 +135,7 @@ Unlike Case Study A, this engagement wasn't about building a security practice f
 - Documentation: Confluence
 
 ### Key Takeaway
+
 Standardization has a remediation cost — touching all 24 existing clients to bring them to a consistent baseline caused short-term analyst load spikes. The payoff: the reduction in per-client reporting time alone recovered enough analyst hours per month to fund onboarding 2–3 additional clients without adding headcount.
 
 ---
@@ -149,6 +155,7 @@ Standardization has a remediation cost — touching all 24 existing clients to b
 If you've used this onboarding checklist in a real engagement and are willing to share your experience (anonymized), we'd like to include it. Open an issue with the label `case-study` and a brief description of the engagement type.
 
 Standards for inclusion:
+
 - Must be a real engagement (no hypotheticals)
 - Must be anonymized to the point where the client is not identifiable
 - Must follow the structure template above

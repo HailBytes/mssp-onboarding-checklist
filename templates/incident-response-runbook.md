@@ -52,15 +52,15 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ## Part 2.5 — Regulatory Breach Notification Quick-Reference
 
-> Run this check for every P1/P2 incident where data exposure is possible. Check which frameworks apply to this client (see their profile or the [compliance onboarding addendum](../checklists/compliance-onboarding-addendum.md)). Notification clocks start at **discovery**, not at investigation close — notify with what you know and supplement later.
+> Run this check for every P1/P2 incident where data exposure is possible. Check which frameworks apply to this client (see their profile or the [compliance onboarding addendum](../checklists/compliance-onboarding-addendum.md)). Notification clocks start at **discovery**, not at investigation close — notify with what you know and supplement later. Ready-to-fill letters for each framework are in the [breach notification letter templates](breach-notification-letters.md).
 
 | Framework | Trigger | Notify | Deadline | Notes |
 |-----------|---------|--------|----------|-------|
 | **HIPAA** | PHI breach affecting 500+ individuals | HHS Office for Civil Rights (OCR) | 60 days from discovery | <500 individuals: log breach and report annually. Always check applicable state breach laws — many are stricter. |
-| **GDPR** | Breach likely to result in risk to EU/EEA data subjects | Client's lead supervisory authority | **72 hours** from discovery | Notify affected individuals separately if breach poses *high* risk (GDPR Art. 34). Identify lead SA by client's EU main establishment. |
+| **GDPR** | Breach likely to result in risk to EU/EEA data subjects | Client's lead supervisory authority | **72 hours** from discovery | Notify affected individuals separately if breach poses _high_ risk (GDPR Art. 34). Identify lead SA by client's EU main establishment. |
 | **PCI-DSS** | Confirmed or suspected cardholder data (CHD) compromise | Client's acquiring bank → card brands (Visa, Mastercard) | Immediately — contractual obligation | Timelines are bank/brand-contractual, not regulatory. Client's acquiring bank drives the card brand notification. Confirm client has a named contact at their acquirer. |
 | **CMMC / DFARS** | Incident on or affecting CUI systems | DoD via DIBNet portal | **72 hours** from discovery | Preserve all digital media related to the incident for 90 days post-report. Confirm client has an active DIBNet account before an incident occurs. |
-| **State Breach Laws** | PII exposure affecting residents of a US state | State Attorney General and/or affected individuals | **30–72 hours** in most aggressive states (CO, FL, WA, ME); 30–90 days in others | Notification jurisdiction is the *state of residence of affected individuals*, not the client's HQ state. Consult legal counsel to confirm which state laws apply. |
+| **State Breach Laws** | PII exposure affecting residents of a US state | State Attorney General and/or affected individuals | **30–72 hours** in most aggressive states (CO, FL, WA, ME); 30–90 days in others | Notification jurisdiction is the _state of residence of affected individuals_, not the client's HQ state. Consult legal counsel to confirm which state laws apply. |
 
 **Checklist — run when breach is suspected:**
 
@@ -107,6 +107,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 ### 4.1 Ransomware
 
 **Immediate Actions:**
+
 1. Isolate affected systems from the network — disconnect from LAN and WiFi immediately. Do not shut down (may destroy encryption keys needed for recovery).
 2. Identify the scope: which systems are encrypted? Are file servers affected? Is this isolated to one endpoint?
 3. Notify client IT lead and MSSP Tier 3 simultaneously.
@@ -116,11 +117,13 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 7. Preserve network logs, EDR telemetry, and memory from an unencrypted system before further containment.
 
 **Do Not:**
+
 - Do not pay ransom without legal and insurance consultation.
 - Do not wipe systems before forensic preservation.
 - Do not restore from backup without first remediating the initial access vector (you will be re-infected).
 
 **Recovery:**
+
 - Identify initial access vector from EDR/SIEM telemetry before any restoration.
 - Restore from verified clean backups (confirm backup integrity before relying on them).
 - Remediate initial access vector, then restore systems in priority order.
@@ -131,6 +134,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 ### 4.2 Credential Compromise / Account Takeover
 
 **Immediate Actions:**
+
 1. Disable the compromised account immediately — do not just change the password (active sessions may persist).
 2. Force sign-out of all active sessions (M365: `Revoke-AzureADUserAllRefreshToken`; Google: Account → Sign out of all sessions).
 3. Check for forwarding rules or delegation added to the compromised mailbox.
@@ -141,6 +145,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 8. Reset MFA enrollment for the account (attacker may have added their own MFA device).
 
 **For Admin Account Compromise:**
+
 - Treat as P1 immediately — admin compromise is a full domain risk event.
 - Audit all admin account activity in the past 7 days.
 - Check for new admin accounts or privilege escalations created.
@@ -151,6 +156,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 ### 4.3 Data Exfiltration
 
 **Immediate Actions:**
+
 1. Identify the exfiltration vector: email, cloud sync, USB, web upload, C2 channel.
 2. Block the exfiltration channel without tipping off the attacker if still active.
 3. Determine what data was exfiltrated: type, volume, sensitivity, and whether it includes PII, PHI, or PCI data.
@@ -160,6 +166,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 7. Determine regulatory notification requirements: HIPAA (60 days), GDPR (72 hours), state breach notification laws (varies by state and record type).
 
 **Do Not:**
+
 - Do not delay legal notification to "investigate further." Regulatory timelines don't pause for investigation.
 - Do not delete or modify logs that constitute evidence.
 
@@ -168,6 +175,7 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 ### 4.4 Phishing — Credential Capture
 
 **Immediate Actions:**
+
 1. Identify affected users: who clicked? Who submitted credentials?
 2. Treat every credential submission as a confirmed compromise — assume the credentials are in attacker hands.
 3. For each affected user: disable account, force session revocation, reset credentials, re-enroll MFA.
@@ -175,6 +183,8 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 5. Check for BEC indicators: did any affected account send wire transfer requests, gift card requests, or changed payment information?
 6. Notify client IT lead and brief them on affected user count.
 7. Send client-facing communication to affected users (see Part 5).
+
+> **Watch for BEC follow-on:** credential phishing frequently precedes business email compromise. If any compromised mailbox was used to request payments, redirect invoices, or change payroll details, escalate to **§4.5 Business Email Compromise / Wire Fraud**.
 
 ---
 
@@ -185,6 +195,7 @@ BEC is distinct from credential phishing: the attacker either compromises a legi
 **Classify immediately:** If a wire has been sent or approved, this is **P1**. Financial recovery windows are measured in hours.
 
 **Immediate Actions:**
+
 1. Determine if a fraudulent payment was sent, approved, or is still pending.
 2. If a wire was sent: **call the client's bank fraud line right now — do not email.** The Financial Fraud Kill Chain (FFKC) can sometimes recall wires, but the window closes fast (domestic: 24 hours; international: 72 hours).
 3. Identify the attack vector: was a real account compromised, or was the sender domain spoofed?
@@ -206,9 +217,12 @@ BEC is distinct from credential phishing: the attacker either compromises a legi
 | Credit card | Chargeback through card issuer | 60–120 days (easiest recovery) |
 
 **Do Not:**
+
 - Do not reply to, forward, or engage with the fraudulent email — the attacker may still be monitoring the mailbox.
 - Do not let finance verify the payment by calling the number in the fraudulent email. It goes to the attacker. Use a phone number from a prior known-good invoice or your vendor directory.
 - Do not delay the bank call for internal analysis. Both can happen in parallel — the bank call cannot wait.
+
+> **Regulatory note:** if employee or customer PII was exposed (common with payroll diversion), run the **Part 2.5 — Regulatory Breach Notification Quick-Reference** and use the [breach notification letter templates](breach-notification-letters.md) to draft required notifications.
 
 ---
 
@@ -217,6 +231,7 @@ BEC is distinct from credential phishing: the attacker either compromises a legi
 A trusted third-party vendor, software package, managed service tool, or IT provider used in the client's environment has been compromised upstream, and the attacker is leveraging that trust to access client systems.
 
 **Immediate Actions:**
+
 1. Confirm the scope: is this a confirmed supply chain event (vendor/software vendor disclosed it), or a suspected one (anomalous behavior from a trusted tool)?
 2. Identify all client systems where the compromised vendor's software, agent, or access is present.
 3. Isolate or block the compromised vendor's access immediately — revoke API keys, disable SSO federation, block the vendor's IP ranges — even before full scope is understood.
@@ -227,11 +242,13 @@ A trusted third-party vendor, software package, managed service tool, or IT prov
 8. Notify client management — supply chain events often require disclosure to clients' own customers or regulators.
 
 **Do Not:**
+
 - Do not update or patch the compromised vendor's software until the vendor has confirmed a clean version is available — an update may be the attack vector.
 - Do not trust communications arriving through the vendor's potentially compromised systems.
 - Do not assume isolation of one client protects others — check your full client portfolio.
 
 **Recovery:**
+
 - Remove the compromised software or vendor access from all affected systems before restoring service.
 - Re-image systems where the vendor had deep access (agent with admin/SYSTEM privileges) rather than attempting in-place remediation.
 - Rotate all credentials, API keys, and tokens accessible to the vendor.
@@ -244,6 +261,7 @@ A trusted third-party vendor, software package, managed service tool, or IT prov
 A current or former employee, contractor, or vendor with legitimate access is abusing that access — either intentionally (data theft, sabotage, fraud) or through coercion. Insider events require careful handling: legal exposure, HR involvement, and chain-of-custody requirements differ significantly from external attacks.
 
 **Immediate Actions:**
+
 1. Before taking any action on the suspected insider's account, notify the client's HR and legal counsel — account disablement without HR coordination can create legal liability and tip off the subject prematurely.
 2. Document the indicators that triggered suspicion with timestamped evidence — logs, DLP alerts, access anomalies. Do not act on rumor alone.
 3. Coordinate with HR and legal on timing of account disablement — in some cases, covert monitoring for a defined window is legally appropriate to preserve evidence; in others (active data exfil), immediate disablement takes priority.
@@ -253,12 +271,14 @@ A current or former employee, contractor, or vendor with legitimate access is ab
 7. For terminated employees: audit all access revocation completeness — shared accounts, physical access, vendor portal accounts, and password manager access are commonly missed.
 
 **Do Not:**
+
 - Do not confront the subject without HR/legal guidance — this can destroy evidence and create legal risk.
 - Do not discuss the investigation over channels the subject might access (shared Slack, ticketing systems they can see).
 - Do not delete or modify any logs before legal has reviewed chain-of-custody requirements.
 - Do not assume the incident is isolated — check for accomplices or external parties the insider may have been working with.
 
 **Recovery:**
+
 - Revoke all access (including any that was shared, delegated, or granted to third parties by the insider).
 - Audit privileged access grants and configuration changes made by the insider account in the preceding 90 days.
 - Rotate credentials for systems the insider had access to — assume they retained copies.
@@ -285,7 +305,7 @@ _Evidence storage:_ [MSSP evidence storage location / secure folder path]
 
 ### 6.1 Internal MSSP Escalation (Pager/SMS)
 
-```
+```text
 P1 INCIDENT — [CLIENT NAME]
 Type: [Ransomware / Account Compromise / Data Exfil / Other]
 Affected: [# systems / accounts]
@@ -296,7 +316,7 @@ Call me immediately.
 
 ### 6.2 Client Notification — P1 Active Incident
 
-```
+```text
 Subject: [URGENT] Security Incident — [CLIENT NAME] — [DATE]
 
 [Client Contact Name],
@@ -317,7 +337,7 @@ Please do not take any action on the affected systems until we've spoken.
 
 ### 6.3 Client Communication — Post-Containment Update
 
-```
+```text
 Subject: Incident Update — [CLIENT NAME] — [DATE / TIME]
 
 [Client Contact Name],
@@ -338,7 +358,7 @@ Next update: [TIME]
 
 ### 6.4 Employee Communication — Phishing Incident (Client to Send)
 
-```
+```text
 Subject: Security Alert — Action Required
 
 Team,
@@ -359,7 +379,7 @@ We'll share more information as our investigation progresses.
 
 ### 6.5 Finance Team Alert — BEC / Wire Fraud (Client to Send)
 
-```
+```text
 Subject: URGENT — Payment Security Alert — Action Required
 
 [Finance / AP Team],
@@ -367,15 +387,15 @@ Subject: URGENT — Payment Security Alert — Action Required
 We are investigating a potential Business Email Compromise (BEC) incident.
 Until further notice, apply the following to ALL payment requests:
 
-1. Do NOT process any payment instruction received by email without first 
-   verbally confirming it with the requestor — use a phone number from your 
+1. Do NOT process any payment instruction received by email without first
+   verbally confirming it with the requestor — use a phone number from your
    existing vendor/employee records, NOT a number provided in the email.
 
-2. If you recently processed a payment based solely on an email instruction 
-   (especially any change to bank account, routing number, or wire details), 
+2. If you recently processed a payment based solely on an email instruction
+   (especially any change to bank account, routing number, or wire details),
    contact [IT/Security Contact] immediately.
 
-3. Do not reply to, forward, or engage with any suspicious email. 
+3. Do not reply to, forward, or engage with any suspicious email.
    Forward the email as an attachment to [IT/Security Contact] instead.
 
 IT and Security are actively investigating. We will provide an update by [TIME].

@@ -1,0 +1,20 @@
+// markdownlint configuration for the MSSP onboarding checklist repo.
+// These are prose-heavy operational docs and templates, so purely stylistic
+// rules (line length, heading punctuation, table spacing) are disabled. The
+// rules left on catch real problems: broken/empty links, bad list/heading
+// spacing, missing code-fence languages, tabs, and missing final newlines.
+{
+  "config": {
+    "default": true,
+    "MD013": false, // line-length — operational prose wraps naturally
+    "MD024": false, // duplicate headings — "Immediate Actions"/"Do Not"/"Recovery" repeat across playbooks by design
+    "MD026": false, // trailing punctuation in headings — "...makes sense when:" is intentional
+    "MD033": false, // inline HTML — the repo uses <!-- NOTE: --> comment blocks as a convention
+    "MD036": false, // emphasis as heading — bold field labels in templates
+    "MD029": false, // ordered-list prefix — the discovery questionnaire numbers questions continuously across sections by design
+    "MD060": false, // table column spacing — stylistic
+    "MD041": false  // first line need not be an H1 — some files open with a table or blockquote
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules", ".git"]
+}
