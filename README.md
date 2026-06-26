@@ -44,6 +44,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 |------|-------------|
 | [client-kickoff-agenda.md](templates/client-kickoff-agenda.md) | 60-min kickoff call agenda with facilitator notes |
 | [discovery-questionnaire.md](templates/discovery-questionnaire.md) | ~35-question client discovery form |
+| [baseline-security-posture-report.md](templates/baseline-security-posture-report.md) | Week 3 baseline report — ASM findings, IAM risks, phishing baseline, patch gaps, 90-day roadmap |
 | [monthly-status-report.md](templates/monthly-status-report.md) | Monthly client-facing report template |
 | [quarterly-business-review.md](templates/quarterly-business-review.md) | QBR document for CISO/VP-level audiences |
 | [incident-response-runbook.md](templates/incident-response-runbook.md) | IR runbook with escalation paths and comms templates |
