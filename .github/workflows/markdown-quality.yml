@@ -1,0 +1,87 @@
+name: Markdown Quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+  pull_request:
+    paths:
+      - '**/*.md'
+  schedule:
+    # Weekly external-link scan every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+
+jobs:
+  # Blocks PRs on broken internal (relative) links.
+  # External URLs are excluded so transient 429s / DNS hiccups never block a merge.
+  internal-links:
+    name: Internal link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check@3
+
+      - name: Check internal links
+        run: |
+          find . -name '*.md' -not -path './.git/*' -print0 \
+            | xargs -0 -n1 markdown-link-check \
+                --config .github/markdown-link-check-internal.json \
+                --verbose
+
+  # Runs on a weekly schedule only; opens a GitHub issue when external links rot.
+  # Not a PR gate — external URLs can be flaky and are not the contributor's problem to fix.
+  external-links:
+    name: External link check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check@3
+
+      - name: Check external links
+        id: link_check
+        run: |
+          find . -name '*.md' -not -path './.git/*' -print0 \
+            | xargs -0 -n1 markdown-link-check \
+                --config .github/markdown-link-check-external.json \
+                --verbose
+        continue-on-error: true
+
+      - name: Open issue on broken external links
+        if: steps.link_check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `Broken external links detected (${new Date().toISOString().slice(0, 10)})`;
+            const body = [
+              '## Weekly external link scan failed',
+              '',
+              'One or more external URLs in the markdown files are returning errors.',
+              '',
+              `**Workflow run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              '',
+              'Check the run logs for the specific broken links and open a PR to fix or replace them.',
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'broken-links',
+            });
+
+            // Avoid duplicate open issues for the same problem
+            if (issues.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['broken-links'],
+              });
+            }
