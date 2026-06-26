@@ -49,6 +49,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 | [quarterly-business-review.md](templates/quarterly-business-review.md) | QBR document for CISO/VP-level audiences |
 | [incident-response-runbook.md](templates/incident-response-runbook.md) | IR runbook with escalation paths and comms templates |
 | [client-communication-emails.md](templates/client-communication-emails.md) | Ready-to-send email templates for each onboarding phase |
+| [breach-notification-letters.md](templates/breach-notification-letters.md) | Ready-to-fill notification letters for HIPAA, GDPR, US state law, and PCI incidents |
 
 ### 🛠️ Tooling Decisions (`/tooling-decisions/`)
 
