@@ -50,6 +50,32 @@ _Run this for every P1 and P2 incident, in order. Do not skip steps._
 
 ---
 
+## Part 2.5 — Regulatory Breach Notification Quick-Reference
+
+> Run this check for every P1/P2 incident where data exposure is possible. Check which frameworks apply to this client (see their profile or the [compliance onboarding addendum](../checklists/compliance-onboarding-addendum.md)). Notification clocks start at **discovery**, not at investigation close — notify with what you know and supplement later.
+
+| Framework | Trigger | Notify | Deadline | Notes |
+|-----------|---------|--------|----------|-------|
+| **HIPAA** | PHI breach affecting 500+ individuals | HHS Office for Civil Rights (OCR) | 60 days from discovery | <500 individuals: log breach and report annually. Always check applicable state breach laws — many are stricter. |
+| **GDPR** | Breach likely to result in risk to EU/EEA data subjects | Client's lead supervisory authority | **72 hours** from discovery | Notify affected individuals separately if breach poses *high* risk (GDPR Art. 34). Identify lead SA by client's EU main establishment. |
+| **PCI-DSS** | Confirmed or suspected cardholder data (CHD) compromise | Client's acquiring bank → card brands (Visa, Mastercard) | Immediately — contractual obligation | Timelines are bank/brand-contractual, not regulatory. Client's acquiring bank drives the card brand notification. Confirm client has a named contact at their acquirer. |
+| **CMMC / DFARS** | Incident on or affecting CUI systems | DoD via DIBNet portal | **72 hours** from discovery | Preserve all digital media related to the incident for 90 days post-report. Confirm client has an active DIBNet account before an incident occurs. |
+| **State Breach Laws** | PII exposure affecting residents of a US state | State Attorney General and/or affected individuals | **30–72 hours** in most aggressive states (CO, FL, WA, ME); 30–90 days in others | Notification jurisdiction is the *state of residence of affected individuals*, not the client's HQ state. Consult legal counsel to confirm which state laws apply. |
+
+**Checklist — run when breach is suspected:**
+
+- [ ] Identify which regulated data types may be involved: PHI, CHD, CUI, EU personal data, state-defined PII
+- [ ] Cross-reference client profile for applicable frameworks
+- [ ] Notify client legal counsel and cyber insurance carrier before any regulatory notification — they should be in the loop first
+- [ ] Log the discovery timestamp — all regulatory clocks start here
+- [ ] Draft initial notification with known facts; do not wait for investigation to complete
+- [ ] For GDPR: confirm lead supervisory authority and whether affected individuals must also be notified
+- [ ] For PCI: contact client's acquirer fraud line — do not send email; call
+- [ ] For CMMC: confirm client DIBNet account is active and accessible
+- [ ] Document all notifications: who was notified, when, by whom, what was communicated
+
+---
+
 ## Part 3 — Escalation Paths
 
 ### MSSP Internal Escalation
