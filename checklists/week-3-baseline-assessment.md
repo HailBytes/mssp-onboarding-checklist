@@ -87,7 +87,7 @@
 
 ## Suggested Deliverables
 
-- **Baseline Security Posture Report** — executive summary + technical findings, organized by severity, suitable for sharing with client leadership. Keep it to 8–12 pages max. Clients don't read 40-page reports.
+- **Baseline Security Posture Report** — executive summary + technical findings, organized by severity, suitable for sharing with client leadership. Keep it to 8–12 pages max. Clients don't read 40-page reports. ([template →](../templates/baseline-security-posture-report.md))
 - **Patch Priority Matrix** — spreadsheet of all patch gaps ranked by risk: CVE severity + asset criticality + internet exposure
 - **Phishing Baseline Report** — internal-only document with click rate by department; share summary (% rate) with client, not raw user-level data
 

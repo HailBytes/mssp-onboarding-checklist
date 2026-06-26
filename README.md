@@ -35,7 +35,7 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 | [week-3-baseline-assessment.md](checklists/week-3-baseline-assessment.md) | Week 3 — First ASM scan, phishing baseline, posture report |
 | [week-4-reporting-cadence.md](checklists/week-4-reporting-cadence.md) | Week 4 — Reporting setup, SLAs, client handoff |
 | [ongoing-monthly-cadence.md](checklists/ongoing-monthly-cadence.md) | Ongoing — Monthly operations and QBR prep |
-| [compliance-onboarding-addendum.md](checklists/compliance-onboarding-addendum.md) | Addendum — HIPAA, PCI-DSS, SOC 2, CMMC, GDPR steps when compliance is in scope |
+| [compliance-onboarding-addendum.md](checklists/compliance-onboarding-addendum.md) | Addendum — HIPAA, PCI-DSS, SOC 2, CMMC, GDPR, NIS2 steps when compliance is in scope |
 | [client-offboarding.md](checklists/client-offboarding.md) | Offboarding — Access revocation, data return, agreement closure, and handoff |
 
 ### 📄 Templates (`/templates/`)
@@ -44,9 +44,11 @@ This repo is for **MSSPs managing 5–50 clients** who want a repeatable, profes
 |------|-------------|
 | [client-kickoff-agenda.md](templates/client-kickoff-agenda.md) | 60-min kickoff call agenda with facilitator notes |
 | [discovery-questionnaire.md](templates/discovery-questionnaire.md) | ~35-question client discovery form |
+| [baseline-security-posture-report.md](templates/baseline-security-posture-report.md) | Week 3 baseline report — ASM findings, IAM risks, phishing baseline, patch gaps, 90-day roadmap |
 | [monthly-status-report.md](templates/monthly-status-report.md) | Monthly client-facing report template |
 | [quarterly-business-review.md](templates/quarterly-business-review.md) | QBR document for CISO/VP-level audiences |
 | [incident-response-runbook.md](templates/incident-response-runbook.md) | IR runbook with escalation paths and comms templates |
+| [client-communication-emails.md](templates/client-communication-emails.md) | Ready-to-send email templates for each onboarding phase |
 | [breach-notification-letters.md](templates/breach-notification-letters.md) | Ready-to-fill notification letters for HIPAA, GDPR, US state law, and PCI incidents |
 
 ### 🛠️ Tooling Decisions (`/tooling-decisions/`)
