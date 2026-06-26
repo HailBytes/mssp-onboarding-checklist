@@ -31,7 +31,7 @@ Before drafting letters, confirm:
 
 ### HHS OCR Narrative (for portal submission)
 
-```
+```text
 HIPAA Breach Notification — [CLIENT LEGAL ENTITY NAME]
 
 Covered Entity: [CLIENT LEGAL ENTITY NAME]
@@ -78,7 +78,7 @@ Was notification to individuals delayed at law enforcement request?
 
 > **Deadline:** Same 60-day window as HHS notification. Individuals must be notified by first-class mail (or email if they've consented to electronic notice). If contact information is unavailable for 10+ individuals, substitute notice via website posting or major print/broadcast media is required.
 
-```
+```text
 [DATE]
 
 [INDIVIDUAL NAME]
@@ -149,7 +149,7 @@ Sincerely,
 >
 > **Who notifies:** The Data Controller (your client). If the MSSP is a Data Processor, you notify the Controller (your client) without undue delay — the Controller then notifies the supervisory authority.
 
-```
+```text
 GDPR Article 33 — Personal Data Breach Notification
 
 To: [NAME OF SUPERVISORY AUTHORITY]
@@ -243,7 +243,7 @@ We are available to provide any additional information required.
 >
 > **Exemptions to individual notification (Article 34(3)):** (a) appropriate technical/organizational measures were implemented (e.g., encryption); (b) measures taken after the breach make high risk unlikely; (c) notification would require disproportionate effort (mass breach with unavailable contacts — use public communication instead).
 
-```
+```text
 [DATE]
 
 Subject: Important notice regarding your personal data — [ORGANIZATION NAME]
@@ -307,7 +307,7 @@ We take full responsibility for this incident and sincerely apologize for any co
 
 ### Notification to Affected Individuals
 
-```
+```text
 [DATE]
 
 [INDIVIDUAL NAME]
@@ -379,7 +379,7 @@ We sincerely apologize for this incident and any inconvenience it causes.
 
 > Not all states require AG notification. Check whether your state requires it and at what threshold. States that require AG notification: CA (500+), NY (500+), IL, TX, CO, WA, and others. Some states (NY, CO) have specific form requirements.
 
-```
+```text
 [DATE]
 
 [STATE ATTORNEY GENERAL NAME]
@@ -435,7 +435,7 @@ Respectfully,
 
 ### Initial Call Script (Acquiring Bank Fraud/Security Line)
 
-```
+```text
 Call Script — Initial Notification to Acquiring Bank
 
 "This is [NAME] from [CLIENT ORGANIZATION NAME], a merchant customer of [ACQUIRING BANK NAME]. Our Merchant ID is [MERCHANT ID].
@@ -456,7 +456,7 @@ Who should we be in contact with, and what is the next step?"
 
 ### Written Follow-Up to Acquiring Bank (send same day as call)
 
-```
+```text
 [DATE — same day as initial call]
 
 [ACQUIRING BANK CONTACT NAME]

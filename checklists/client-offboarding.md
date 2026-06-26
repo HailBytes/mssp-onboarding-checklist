@@ -1,7 +1,7 @@
 # Client Offboarding Checklist
 
 > **Goal:** Exit the engagement cleanly — no orphaned MSSP access, no retained client data beyond what's required, no ambiguous handoffs. A poorly executed offboarding is a security incident waiting to happen, and a liability if you're subject to HIPAA, GDPR, or PCI.
-
+>
 > **When to start:** 30 days before the engagement end date, or immediately upon receiving notice of termination.
 
 ---

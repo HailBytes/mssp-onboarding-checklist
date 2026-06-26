@@ -30,6 +30,7 @@ The gap between "we have a partner program" and "we were built for MSSPs" is ope
 ### 2. Phishing Simulation Scheduling: Per-Client, Automated
 
 The most operationally painful part of SAT at scale is managing phishing schedules across many clients. You need:
+
 - Per-client campaign scheduling (Client A gets monthly phishing, Client B gets quarterly)
 - Template library with freshness — templates from 3 years ago don't reflect current threat actor TTPs
 - Automated campaign launch without manual analyst intervention
@@ -38,6 +39,7 @@ The most operationally painful part of SAT at scale is managing phishing schedul
 ### 3. Per-Client Reporting That Doesn't Require Manual Assembly
 
 If your analysts are copy-pasting data into PowerPoint to make a client report, your platform has failed you. You need:
+
 - Automated per-client report generation on a schedule
 - White-label formatting (your logo, your brand, optional custom colors)
 - Executive summary and technical detail layers in the same report
@@ -46,6 +48,7 @@ If your analysts are copy-pasting data into PowerPoint to make a client report, 
 ### 4. Content Library Freshness and Breadth
 
 Clients notice when your training content is stale. Evaluate:
+
 - How frequently is new content added?
 - Is content localized for non-English-speaking workforces?
 - Are there role-specific tracks (finance, HR, IT, executive)?
@@ -54,6 +57,7 @@ Clients notice when your training content is stale. Evaluate:
 ### 5. Compliance Module Coverage
 
 For MSSPs serving regulated industries, training must map to frameworks:
+
 - HIPAA Security Awareness (annual requirement)
 - PCI-DSS Training Requirements
 - SOC 2 evidence support
@@ -63,6 +67,7 @@ For MSSPs serving regulated industries, training must map to frameworks:
 ### 6. User Provisioning at Scale
 
 You'll be provisioning employees at every client. MSSP-grade means:
+
 - Active Directory / Azure AD sync per client
 - SCIM provisioning for automated user lifecycle management
 - CSV import as a fallback (not as the primary path)
@@ -100,6 +105,7 @@ You'll be provisioning employees at every client. MSSP-grade means:
 **Per-client pricing removes a friction point in your sales motion.** When a prospect asks "what does SAT cost to add?", you should have a flat answer. Per-seat pricing introduces a variable that makes quoting slower and margin modeling harder.
 
 **Where HailBytes SAT may not be the right fit:**
+
 - If your client mix is exclusively large enterprises (1,000+ users) who already have entrenched SAT as part of M365 E5 bundles
 - If a specific compliance framework (CMMC, FedRAMP) requires a platform with federal certifications HailBytes hasn't pursued
 - If you're selling SAT as a standalone product directly to end customers — this is optimized for MSSP-managed delivery

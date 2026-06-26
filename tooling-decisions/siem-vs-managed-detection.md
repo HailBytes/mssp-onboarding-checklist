@@ -85,6 +85,7 @@ MDR providers offload SIEM infrastructure, content, and first-tier analysis to a
 ## The Honest Summary: When to DIY vs. Outsource
 
 ### DIY SIEM makes sense when:
+
 - You have **30+ clients** — fixed costs amortize across enough revenue
 - You have **existing SOC talent** you can retain
 - **Client contract value is high enough** to absorb overhead (average client at $3,000+/month)
@@ -92,6 +93,7 @@ MDR providers offload SIEM infrastructure, content, and first-tier analysis to a
 - You're building toward a long-term **MDR-as-a-service** offering
 
 ### Managed Detection makes sense when:
+
 - You're **under 15 clients** and building toward scale — DIY SIEM fixed costs eat your margin
 - Your team is **strong on delivery but thin on detection engineering** — don't fake expertise you don't have
 - Your clients are mostly **SMBs** where standard MDR detection logic covers the realistic threat profile

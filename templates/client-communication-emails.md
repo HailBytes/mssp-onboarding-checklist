@@ -3,6 +3,7 @@
 Ready-to-send email drafts for each stage of the onboarding engagement. Replace `[BRACKETED]` placeholders before sending.
 
 **Usage notes:**
+
 - Adjust tone to match your relationship with each client (formal vs. conversational).
 - CC your internal account lead on all client-facing emails.
 - BCC your project management system or forward to your ticket so emails are logged.
@@ -21,17 +22,20 @@ Thanks for the time today. Quick summary of what we aligned on and what happens 
 **Scope confirmed:** [2–3 sentence description of agreed scope — e.g., "EDR deployment across 180 Windows endpoints, ASM coverage for your 4 public-facing domains, and monthly phishing simulations starting in Week 3."]
 
 **Access we need from your team by [DATE — Day 3]:**
+
 - [ ] Local admin credentials or Intune/SCCM access for EDR deployment
 - [ ] Read-only Azure AD / Active Directory service account
 - [ ] DNS management access (or permission to have your IT team apply our TXT records)
 - [ ] [Any other access items specific to this client]
 
 **What we're doing this week:**
+
 - External asset discovery across your known domains
 - IAM audit — identifying stale accounts, privileged users, MFA gaps
 - Full inventory of your current security stack
 
 **Primary contacts confirmed:**
+
 - Your side: [CLIENT POC NAME], [CLIENT POC EMAIL]
 - Our side: [MSSP LEAD NAME], [MSSP LEAD EMAIL] — for urgent issues call [PHONE]
 
@@ -56,6 +60,7 @@ Week 1 discovery is complete. Here's what we found and what we're doing about it
 **Security stack inventory:** [List what's confirmed deployed — e.g., "Defender for Endpoint on Windows, no EDR coverage on macOS workstations, Mimecast on email, no ASM tool currently in place."]
 
 **Open items needing your input:**
+
 1. [Item 1 — e.g., "We couldn't enumerate your AWS accounts — can you send a list of account IDs?"]
 2. [Item 2 — e.g., "Three servers are unreachable on the network scan. Are they offline, or is there a firewall rule we should know about?"]
 
@@ -76,16 +81,19 @@ Hi [SPONSOR FIRST NAME],
 Tooling deployment is complete. Here's where everything stands.
 
 **Deployed and active:**
+
 - **EDR:** [N] of [N] endpoints covered ([%] coverage). [N] endpoints still pending — see note below.
 - **ASM:** Continuous monitoring active across [N] domains. First scan results expected within 24 hours.
 - **Email security:** SPF [confirmed/updated], DKIM [configured/pending], DMARC policy set to `[p=none / quarantine / reject]`.
 - **SAT platform:** [N] user accounts provisioned from your directory. First phishing simulation scheduled for [DATE].
 
 **Pending items:**
+
 - [N] endpoints couldn't be reached for agent deployment — [reason, e.g., "likely offline or VPN-isolated"]. We'll retry on [DATE] and will need your help if machines remain unreachable.
 - DMARC is currently in monitoring mode (`p=none`). We'll review telemetry in Week 3 and recommend escalating to quarantine if the data looks clean.
 
 **What you'll notice:**
+
 - EDR may surface quarantine notifications on endpoints. These will come from [TOOL NAME] and are expected.
 - Users will receive a SAT enrollment email from [PLATFORM NAME] on [DATE]. We recommend sending your team a heads-up — template below if helpful.
 
@@ -133,6 +141,7 @@ Hi [SPONSOR FIRST NAME],
 We've completed your 30-day onboarding. Here's a summary of where things stand and what to expect going forward.
 
 **Onboarding outcomes:**
+
 - [N] endpoints under EDR coverage ([%] of your fleet)
 - Continuous ASM monitoring across [N] assets
 - [N] users enrolled in security awareness training
@@ -143,11 +152,13 @@ We've completed your 30-day onboarding. Here's a summary of where things stand a
 Your read-only portal is live at [URL]. Login credentials are in the attached PDF (encrypted — password sent separately via [METHOD]).
 
 **Your monthly cadence going forward:**
+
 - **Monthly status report:** Delivered by the [5th] of each month via email
 - **Monthly check-in call:** [DAY/TIME — e.g., "Second Tuesday, 10 AM ET"] — calendar invite to follow
 - **First QBR:** Scheduled for [DATE ~90 days out]
 
 **SLA reminder:**
+
 - Critical incidents (P1): We page immediately, triage within 15 minutes
 - High incidents (P2): Response within 2 hours
 - For anything urgent, call [PHONE] — don't wait for email
@@ -172,6 +183,7 @@ Your [MONTH] security report is attached. Key highlights:
 [One sentence — e.g., "Overall posture is stable. We closed 4 findings from last month's report and detected one phishing attempt that our tools quarantined before any user interaction."]
 
 **Metrics at a glance:**
+
 | Metric | This Month | Last Month |
 |--------|-----------|-----------|
 | Open critical/high findings | [N] | [N] |
@@ -205,11 +217,13 @@ Hi [SPONSOR FIRST NAME],
 [2–4 sentences of factual detail — e.g., "EDR flagged lateral movement from workstation DESKTOP-ABC123 at 14:32 UTC. We have isolated the machine and are analyzing the attack chain. We currently have no evidence of data exfiltration, but we cannot rule it out yet."]
 
 **Immediate actions we've taken:**
+
 - [Action 1 — e.g., "Isolated the affected endpoint from the network"]
 - [Action 2 — e.g., "Forced password reset for the affected user account"]
 - [Action 3 if applicable]
 
 **What we need from you right now:**
+
 - [ ] [E.g., "Confirm whether [USER NAME] is currently at work or traveling"]
 - [ ] [E.g., "Do not restart or touch DESKTOP-ABC123 — we need to preserve evidence"]
 - [ ] [E.g., "If this system handles [REGULATED DATA TYPE], notify your legal/compliance team now — regulatory notification clocks may apply"]
@@ -235,6 +249,7 @@ Attached is the post-mortem report for the [INCIDENT DESCRIPTION] incident on [D
 **Root cause:** [E.g., "The phishing email spoofed a known vendor and used a legitimate hosting provider, which reduced its spam score below our filter threshold."]
 
 **What we changed as a result:**
+
 1. [E.g., "Added vendor's domain to allowed-list with enhanced inspection rules"]
 2. [E.g., "Tightened geofencing policy — logins from high-risk countries now require MFA step-up even on trusted devices"]
 3. [E.g., "Scheduled an unannounced phishing simulation in 30 days to test user response"]
@@ -254,6 +269,7 @@ Hi [SPONSOR FIRST NAME],
 Time for our quarterly security review. I'd like to bring together [MSSP ATTENDEES] on our side — I'd recommend including [SUGGESTED CLIENT ATTENDEES — e.g., "your IT lead and your CFO if they have time"] on yours.
 
 **Proposed agenda (60 minutes):**
+
 1. **Quarter in review (10 min):** Key metrics, incidents, wins
 2. **Trend analysis (15 min):** Where your posture has improved; where risks have grown
 3. **Top 3 recommendations (15 min):** Strategic priorities for next quarter
@@ -277,6 +293,7 @@ Hi [SPONSOR FIRST NAME],
 As we approach the end of our engagement on [END DATE], I want to make sure the transition is clean and nothing falls through the cracks.
 
 **What we'll deliver before [DATE]:**
+
 - [ ] Final security posture report (current open findings, risk summary, 12-month trend)
 - [ ] Asset register export (all assets we've been monitoring)
 - [ ] Complete credential inventory (systems we have access to, for your records)
@@ -285,6 +302,7 @@ As we approach the end of our engagement on [END DATE], I want to make sure the 
 
 **Access revocation schedule:**
 We'll remove our access to your systems on [DATE]. Before then, we need your team to:
+
 - [ ] Confirm a new owner for [TOOL/PLATFORM] tenant (or confirm you want us to close it)
 - [ ] Acknowledge receipt of the final deliverables
 - [ ] Countersign the engagement closure form [ATTACHED]

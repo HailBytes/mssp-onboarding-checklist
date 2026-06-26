@@ -7,6 +7,7 @@ Thanks for helping make this better. This repo is maintained by [HailBytes](http
 ## What We're Looking For
 
 **Good contributions:**
+
 - Checklist items you've found missing in practice
 - Common pitfalls that aren't already documented
 - Template improvements based on what actually works with clients
@@ -15,6 +16,7 @@ Thanks for helping make this better. This repo is maintained by [HailBytes](http
 - Tooling comparisons that remain vendor-neutral and honest about tradeoffs
 
 **Not a fit:**
+
 - Generic "best practices" content that isn't grounded in MSSP operations
 - Vendor promotional content (including HailBytes — this repo earns trust by being useful, not by being a brochure)
 - Content that contradicts the editorial bar below without a compelling reason
@@ -67,6 +69,7 @@ Case studies are the highest-value contribution and the hardest to do right. Req
 ### Tooling Comparisons
 
 Tooling guides need to:
+
 - Include a "Last reviewed" date
 - Acknowledge when data may be outdated
 - Evaluate on criteria that matter for MSSP operations, not generic enterprise use cases

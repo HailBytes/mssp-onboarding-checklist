@@ -5,9 +5,13 @@ on:
     branches: [main]
     paths:
       - '**/*.md'
+      - '.github/workflows/markdown-quality.yml'
+      - '.markdownlint-cli2.jsonc'
   pull_request:
     paths:
       - '**/*.md'
+      - '.github/workflows/markdown-quality.yml'
+      - '.markdownlint-cli2.jsonc'
   schedule:
     # Weekly external-link scan every Monday at 09:00 UTC
     - cron: '0 9 * * 1'
@@ -30,6 +34,38 @@ jobs:
             | xargs -0 -n1 markdown-link-check \
                 --config .github/markdown-link-check-internal.json \
                 --verbose
+
+  # Blocks PRs on Markdown style/structure problems (per .markdownlint-cli2.jsonc).
+  # Stylistic rules ill-suited to prose docs are disabled in that config.
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run markdownlint-cli2
+        run: npx --yes markdownlint-cli2
+
+  # Blocks PRs that leak editorial leftovers into the docs: unresolved merge
+  # conflict markers and TODO/FIXME/XXX placeholders. Intentional bracket
+  # placeholders ([CLIENT NAME], [DATE], ...) and <!-- NOTE: --> blocks are NOT
+  # flagged — they are part of how the templates are meant to be used.
+  editorial-leftovers:
+    name: Editorial leftover check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan for conflict markers and TODO/FIXME
+        run: |
+          # Match real conflict markers ("<<<<<<< ", "=======", ">>>>>>> ") and
+          # TODO/FIXME/XXX tokens. -E extended regex; -n shows line numbers.
+          if grep -rnE '^(<{7}|={7}|>{7})( |$)|\b(TODO|FIXME|XXX)\b' \
+               --include='*.md' . ; then
+            echo "::error::Editorial leftovers found (conflict markers or TODO/FIXME). Resolve before merging."
+            exit 1
+          fi
+          echo "No editorial leftovers found."
 
   # Runs on a weekly schedule only; opens a GitHub issue when external links rot.
   # Not a PR gate — external URLs can be flaky and are not the contributor's problem to fix.
