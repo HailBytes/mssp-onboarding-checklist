@@ -212,6 +212,60 @@ BEC is distinct from credential phishing: the attacker either compromises a legi
 
 ---
 
+### 4.6 Supply Chain Compromise
+
+A trusted third-party vendor, software package, managed service tool, or IT provider used in the client's environment has been compromised upstream, and the attacker is leveraging that trust to access client systems.
+
+**Immediate Actions:**
+1. Confirm the scope: is this a confirmed supply chain event (vendor/software vendor disclosed it), or a suspected one (anomalous behavior from a trusted tool)?
+2. Identify all client systems where the compromised vendor's software, agent, or access is present.
+3. Isolate or block the compromised vendor's access immediately — revoke API keys, disable SSO federation, block the vendor's IP ranges — even before full scope is understood.
+4. Check for lateral movement initiated from the compromised vendor's agent or account: new scheduled tasks, new admin accounts, unusual outbound connections.
+5. Preserve EDR telemetry and network logs from the time the vendor's software was installed or last updated.
+6. Contact the vendor directly through an out-of-band channel (not their ticketing system, which may be compromised) to confirm scope and get their official guidance.
+7. Check whether other MSSP clients use the same vendor/software — a supply chain event often affects multiple clients simultaneously. Triage all affected clients.
+8. Notify client management — supply chain events often require disclosure to clients' own customers or regulators.
+
+**Do Not:**
+- Do not update or patch the compromised vendor's software until the vendor has confirmed a clean version is available — an update may be the attack vector.
+- Do not trust communications arriving through the vendor's potentially compromised systems.
+- Do not assume isolation of one client protects others — check your full client portfolio.
+
+**Recovery:**
+- Remove the compromised software or vendor access from all affected systems before restoring service.
+- Re-image systems where the vendor had deep access (agent with admin/SYSTEM privileges) rather than attempting in-place remediation.
+- Rotate all credentials, API keys, and tokens accessible to the vendor.
+- Evaluate whether to continue using the vendor; document the decision and rationale for client records.
+
+---
+
+### 4.7 Insider Threat
+
+A current or former employee, contractor, or vendor with legitimate access is abusing that access — either intentionally (data theft, sabotage, fraud) or through coercion. Insider events require careful handling: legal exposure, HR involvement, and chain-of-custody requirements differ significantly from external attacks.
+
+**Immediate Actions:**
+1. Before taking any action on the suspected insider's account, notify the client's HR and legal counsel — account disablement without HR coordination can create legal liability and tip off the subject prematurely.
+2. Document the indicators that triggered suspicion with timestamped evidence — logs, DLP alerts, access anomalies. Do not act on rumor alone.
+3. Coordinate with HR and legal on timing of account disablement — in some cases, covert monitoring for a defined window is legally appropriate to preserve evidence; in others (active data exfil), immediate disablement takes priority.
+4. Identify the data accessed or exfiltrated: volume, sensitivity, destination (USB, personal cloud, personal email, external transfer).
+5. Preserve all audit logs, email, DLP events, badge access records, and HR documentation with chain of custody.
+6. Check for sabotage indicators: deleted records, modified configurations, logic bombs, backdoors, or privileged access grants made to external parties.
+7. For terminated employees: audit all access revocation completeness — shared accounts, physical access, vendor portal accounts, and password manager access are commonly missed.
+
+**Do Not:**
+- Do not confront the subject without HR/legal guidance — this can destroy evidence and create legal risk.
+- Do not discuss the investigation over channels the subject might access (shared Slack, ticketing systems they can see).
+- Do not delete or modify any logs before legal has reviewed chain-of-custody requirements.
+- Do not assume the incident is isolated — check for accomplices or external parties the insider may have been working with.
+
+**Recovery:**
+- Revoke all access (including any that was shared, delegated, or granted to third parties by the insider).
+- Audit privileged access grants and configuration changes made by the insider account in the preceding 90 days.
+- Rotate credentials for systems the insider had access to — assume they retained copies.
+- Work with client HR and legal on documentation for potential law enforcement referral or civil action.
+
+---
+
 ## Part 5 — Evidence Preservation
 
 _Before taking containment action that modifies system state:_
