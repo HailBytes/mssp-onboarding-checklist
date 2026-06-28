@@ -1,6 +1,6 @@
 # MSSP Client Onboarding Checklist
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Changelog](https://img.shields.io/badge/changelog-CHANGELOG.md-blue)](CHANGELOG.md)
 
 > **HailBytes MSSP Program** | [ASM for MSSPs →](https://hailbytes.com/asm-for-mssps) | [SAT for MSSPs →](https://hailbytes.com/sat-for-mssps) | [Book a demo →](https://hailbytes.com/demo)
 
