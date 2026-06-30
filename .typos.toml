@@ -1,0 +1,10 @@
+[default.extend-words]
+# Healthcare / HIPAA acronyms
+BA = "BA"       # Business Associate (e.g. BAA = Business Associate Agreement)
+EHR = "EHR"     # Electronic Health Records
+
+# Industrial / OT security
+OT = "OT"       # Operational Technology (ICS/SCADA environments)
+
+# Hyphenated compound prefix — e.g. "mis-deployed", "mis-configured"
+mis = "mis"
