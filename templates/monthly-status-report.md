@@ -56,7 +56,7 @@
 | 2 | 🟠 High | [Description] | [domain/IP] | [date] | [MSSP / Client IT] | |
 | 3 | 🟠 High | [Description] | [domain/IP] | [date] | [MSSP / Client IT] | |
 
-> **Note:** Full finding details, including Medium and Low severity items, are in the [Remediation Tracker]([LINK]).
+> **Note:** Full finding details, including Medium and Low severity items, are in the Remediation Tracker: [LINK]
 
 ---
 
