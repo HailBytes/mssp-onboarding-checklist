@@ -2,6 +2,6 @@
   "ignorePatterns": [
     { "pattern": "^https?://" },
     { "pattern": "^mailto:" },
-    { "pattern": "^\\[" }
+    { "pattern": "^(\\[|%5B)" }
   ]
 }
