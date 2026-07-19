@@ -25,7 +25,7 @@
   - P4: monthly review, no SLA for resolution
 - [ ] Confirm SLA targets are realistic for your current team size — don't promise P1 response in 15 minutes if you're a 3-person team
 - [ ] Define escalation path: what happens when SLA is missed?
-- [ ] Get client sign-off on SLA framework — even a simple email confirmation counts
+- [ ] Get client sign-off on SLA framework using the SLA template ([template →](../templates/service-level-agreement.md)) — even a simple email confirmation counts
 - [ ] Document after-hours coverage model: who gets paged for P1 at 2am? Does the client know how to reach them?
 
 ---
@@ -81,7 +81,7 @@
 ## Suggested Deliverables
 
 - **Monthly Status Report v1** — first report covering onboarding period, delivered to client
-- **SLA Agreement** — signed or email-confirmed SLA document
+- **SLA Agreement** — signed or email-confirmed SLA document ([template →](../templates/service-level-agreement.md))
 - **Remediation Tracker** — shared document with all open findings, owners, and target dates
 - **Client Quick Reference Card** — one-page contact sheet and escalation guide
 
