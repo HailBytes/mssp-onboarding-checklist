@@ -119,6 +119,6 @@ An ASM tool that fires 200 alerts per client per day is worse than no ASM tool �
 ## Related Resources
 
 - [Full ASM Tool Comparison (HailBytes GitHub)](https://github.com/HailBytes/asm-tool-comparison) — named vendor comparisons with methodology
-- [HailBytes ASM for MSSPs](https://hailbytes.com/asm-for-mssps) — product details and MSSP program
+- [HailBytes ASM for MSSPs](https://hailbytes.com/mssp) — product details and MSSP program
 - [SAT Platform Selection Guide](sat-platform-selection.md) — companion guide for your awareness training stack
 - [Book a demo](https://hailbytes.com/demo)

@@ -130,7 +130,7 @@ The sales demo will always look good. Here's what to test:
 
 ## Related Resources
 
-- [HailBytes SAT for MSSPs](https://hailbytes.com/sat-for-mssps) — product details and MSSP program
+- [HailBytes SAT for MSSPs](https://hailbytes.com/mssp) — product details and MSSP program
 - [Book a demo](https://hailbytes.com/demo)
 - [ASM Tool Selection Guide](asm-tool-selection.md) — companion guide for the ASM side of your stack
 - [SIEM vs. Managed Detection Guide](siem-vs-managed-detection.md) — related infrastructure decision
