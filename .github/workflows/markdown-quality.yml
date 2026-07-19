@@ -7,11 +7,13 @@ on:
       - '**/*.md'
       - '.github/workflows/markdown-quality.yml'
       - '.markdownlint-cli2.jsonc'
+      - '.typos.toml'
   pull_request:
     paths:
       - '**/*.md'
       - '.github/workflows/markdown-quality.yml'
       - '.markdownlint-cli2.jsonc'
+      - '.typos.toml'
   schedule:
     # Weekly external-link scan every Monday at 09:00 UTC
     - cron: '0 9 * * 1'
@@ -66,6 +68,20 @@ jobs:
             exit 1
           fi
           echo "No editorial leftovers found."
+
+  # Blocks PRs on spelling errors in markdown files.
+  # Domain-specific acronyms (BA, EHR, OT) and compound prefixes (mis-)
+  # are whitelisted in .typos.toml so only genuine typos fail the gate.
+  spell-check:
+    name: Spell check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run typos
+        uses: crate-ci/typos@v1
+        with:
+          config: .typos.toml
 
   # Runs on a weekly schedule only; opens a GitHub issue when external links rot.
   # Not a PR gate — external URLs can be flaky and are not the contributor's problem to fix.
