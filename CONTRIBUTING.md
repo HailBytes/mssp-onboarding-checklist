@@ -45,6 +45,8 @@ Every contribution should meet these standards before submitting a PR:
 
 Check open issues and PRs (`state:open`) for the file(s) you're about to touch. This repo has had the same one-line fix independently opened as five separate PRs because nobody checked first — don't add a sixth. If existing work already covers the gap, comment on or review it instead of opening a duplicate.
 
+Run `./scripts/local-checks.sh` before pushing. It runs the same markdownlint, editorial-leftover, spell-check, and internal-link checks as CI (`markdown-quality.yml`), so you catch failures before opening a PR instead of after.
+
 ### Small Changes (typos, corrections, broken links)
 
 Open a PR directly. No issue needed for small fixes.
