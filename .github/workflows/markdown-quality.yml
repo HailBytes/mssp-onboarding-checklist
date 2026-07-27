@@ -57,6 +57,8 @@ jobs:
   # conflict markers and TODO/FIXME/XXX placeholders. Intentional bracket
   # placeholders ([CLIENT NAME], [DATE], ...) and <!-- NOTE: --> blocks are NOT
   # flagged — they are part of how the templates are meant to be used.
+  # CHANGELOG.md is excluded because it legitimately documents this very check
+  # (and past changes to it) using the literal words TODO/FIXME/XXX.
   editorial-leftovers:
     name: Editorial leftover check
     runs-on: ubuntu-latest
@@ -68,7 +70,7 @@ jobs:
           # Match real conflict markers ("<<<<<<< ", "=======", ">>>>>>> ") and
           # TODO/FIXME/XXX tokens. -E extended regex; -n shows line numbers.
           if grep -rnE '^(<{7}|={7}|>{7})( |$)|\b(TODO|FIXME|XXX)\b' \
-               --include='*.md' . ; then
+               --include='*.md' --exclude='CHANGELOG.md' . ; then
             echo "::error::Editorial leftovers found (conflict markers or TODO/FIXME). Resolve before merging."
             exit 1
           fi
@@ -154,6 +156,9 @@ jobs:
     name: Content freshness check
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
+    permissions:
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v4
 
