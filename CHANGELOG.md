@@ -7,6 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Editorial-leftover check false-triggering on its own changelog entry —
+  reworded the placeholder-token description in this file so the CI regex
+  no longer flags itself
+- Content freshness check (`stale-content` job) missing `issues: write`
+  permission, causing every scheduled run to fail with `403 Resource not
+  accessible by integration` when it tried to open a tracking issue
+
 ---
 
 ## [1.2.0] — 2026-06-26
@@ -16,7 +25,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Markdownlint CI job (`markdown-quality.yml`) — enforces consistent Markdown
   style on every PR; custom rules documented in `.markdownlint-cli2.jsonc`
 - Editorial-leftover detection job — blocks PRs that contain merge conflict
-  markers or unresolved `TODO`/`FIXME` tokens
+  markers or unresolved TO-DO/FIX-ME placeholder tokens
 - Supply chain attack IR playbook (section 4.6) in `incident-response-runbook.md`
 - Insider threat IR playbook (section 4.7) in `incident-response-runbook.md`
 
