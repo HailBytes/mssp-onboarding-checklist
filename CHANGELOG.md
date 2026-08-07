@@ -28,7 +28,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Markdownlint CI job (`markdown-quality.yml`) — enforces consistent Markdown
   style on every PR; custom rules documented in `.markdownlint-cli2.jsonc`
 - Editorial-leftover detection job — blocks PRs that contain merge conflict
-  markers or unresolved TO-DO/FIX-ME placeholder tokens
+  markers or unresolved to-do/fix-me placeholders
 - Supply chain attack IR playbook (section 4.6) in `incident-response-runbook.md`
 - Insider threat IR playbook (section 4.7) in `incident-response-runbook.md`
 
