@@ -15,6 +15,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Content freshness check (`stale-content` job) missing `issues: write`
   permission, causing every scheduled run to fail with `403 Resource not
   accessible by integration` when it tried to open a tracking issue
+- Removed the reference-style version links at the bottom of this file —
+  they pointed at `compare`/`releases` URLs for git tags that were never
+  created, so all five 404'd on every weekly link-check run (issue #51)
 
 ---
 
@@ -111,8 +114,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   case-study submission process
 - MIT License
 
-[Unreleased]: https://github.com/HailBytes/mssp-onboarding-checklist/compare/v1.2.0...HEAD
-[1.2.0]: https://github.com/HailBytes/mssp-onboarding-checklist/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/HailBytes/mssp-onboarding-checklist/compare/v1.0.1...v1.1.0
-[1.0.1]: https://github.com/HailBytes/mssp-onboarding-checklist/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/HailBytes/mssp-onboarding-checklist/releases/tag/v1.0.0
+<!--
+No git tags or GitHub releases exist for the versions above, so this file
+does not use Keep a Changelog's linked version headers/compare URLs — they
+would 404 (see issue #51). If this repo starts tagging releases (e.g. `git
+tag v1.3.0`), reintroduce the reference-style links here pointing at the
+real tags.
+-->
