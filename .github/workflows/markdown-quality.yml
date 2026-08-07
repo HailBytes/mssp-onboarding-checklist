@@ -30,7 +30,7 @@ jobs:
     name: Internal link check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install markdown-link-check
         run: npm install -g markdown-link-check@3
@@ -48,7 +48,7 @@ jobs:
     name: Markdown lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run markdownlint-cli2
         run: npx --yes markdownlint-cli2@0.23.1
@@ -61,7 +61,7 @@ jobs:
     name: Editorial leftover check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Scan for conflict markers and TODO/FIXME
         run: |
@@ -81,7 +81,7 @@ jobs:
     name: Spell check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run typos
         uses: crate-ci/typos@v1
@@ -98,7 +98,7 @@ jobs:
       contents: read
       issues: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install markdown-link-check
         run: npm install -g markdown-link-check@3
@@ -155,7 +155,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Scan for stale "Last reviewed" dates
         id: staleness_check
