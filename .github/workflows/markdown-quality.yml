@@ -15,8 +15,13 @@ on:
       - '.markdownlint-cli2.jsonc'
       - '.typos.toml'
   schedule:
-    # Weekly external-link scan every Monday at 09:00 UTC
-    - cron: '0 9 * * 1'
+    # Monthly external-link + freshness scan, 1st of the month at 09:00 UTC
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 # Least-privilege default: none of these jobs need to write to the repo.
 # The external-links job overrides this to add the one write scope it needs.
@@ -28,6 +33,7 @@ jobs:
   # External URLs are excluded so transient 429s / DNS hiccups never block a merge.
   internal-links:
     name: Internal link check
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -46,6 +52,7 @@ jobs:
   # Stylistic rules ill-suited to prose docs are disabled in that config.
   markdownlint:
     name: Markdown lint
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -59,6 +66,7 @@ jobs:
   # flagged — they are part of how the templates are meant to be used.
   editorial-leftovers:
     name: Editorial leftover check
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -79,6 +87,7 @@ jobs:
   # are whitelisted in .typos.toml so only genuine typos fail the gate.
   spell-check:
     name: Spell check
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -93,7 +102,7 @@ jobs:
   external-links:
     name: External link check
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: read
       issues: write
@@ -153,7 +162,7 @@ jobs:
   stale-content:
     name: Content freshness check
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: read
       issues: write
