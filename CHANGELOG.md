@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Vendor-neutral RMM and endpoint-management deployment controls for pilot
+  scope, tenant assignment, least-privilege access, evidence, rollback, and
+  fleet reconciliation in the Week 2 checklist
+
 ### Fixed
 
 - Editorial-leftover check false-triggering on its own changelog entry —

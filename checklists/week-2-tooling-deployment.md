@@ -28,6 +28,26 @@
 
 ---
 
+## RMM / Endpoint Management Deployment
+
+- [ ] Record the approved endpoint scope and a before-state inventory before installing the management agent
+- [ ] Pilot the agent on representative, noncritical endpoints before broad deployment
+- [ ] Verify every pilot endpoint is assigned to the correct client, site, and policy; investigate duplicate records
+- [ ] Restrict technician roles to the minimum required permissions and require MFA for interactive access
+- [ ] Confirm agent check-in, hardware and software inventory, alert delivery, job results, and audit events are recorded
+- [ ] Assign an owner, response target, and escalation path for each enabled alert class
+- [ ] Validate policy inheritance and document every exception before applying settings to the fleet
+- [ ] Test rollback or uninstall, then verify enrollment credentials and tokens can be revoked
+- [ ] Reconcile discovered, installed, healthy, excluded, and exception counts; do not treat installation as proof of coverage
+- [ ] Tell client IT the agent name, expected processes and services, maintenance-window behavior, and support route
+
+> **Optional evidence pack:** Use the blank, no-gate
+> [RMM pilot test and evidence pack](https://izikipizi.github.io/nizlo-msp-operations-resources/rmm-pilot-test-evidence-pack.html)
+> to record pilot results, owners, evidence links, and go/no-go decisions, or
+> reproduce the same fields in your existing change-management system.
+
+---
+
 ## ASM Platform — Deploy and Configure
 
 - [ ] Add client to multi-tenant ASM dashboard (HailBytes ASM: < 30 min to onboard a new client)
