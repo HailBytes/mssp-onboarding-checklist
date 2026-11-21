@@ -28,6 +28,20 @@
 
 ---
 
+## RMM / Endpoint Management Deployment
+
+- [ ] Confirm the approved RMM / endpoint-management scope and record a before-state endpoint inventory
+- [ ] Pilot the agent on representative, noncritical Windows, macOS, Linux, server, and remote-worker systems in scope
+- [ ] Verify every pilot endpoint is assigned to the correct client, site, and policy; resolve duplicate or stale records
+- [ ] Restrict technician roles to least privilege, require MFA, and document who can run scripts or start remote sessions
+- [ ] Confirm check-in, hardware and software inventory, alerting, job results, and audit events are arriving as expected
+- [ ] Review inherited policies and exceptions before fleet rollout; require change approval for high-impact automation
+- [ ] Map each actionable alert to an owner, ticket priority, response target, and escalation path
+- [ ] Test rollback: agent uninstall, credential or token revocation, and removal of unattended remote-access components
+- [ ] Reconcile discovered, installed, healthy, and exception counts; document every remaining coverage gap
+
+---
+
 ## ASM Platform — Deploy and Configure
 
 - [ ] Add client to multi-tenant ASM dashboard (HailBytes ASM: < 30 min to onboard a new client)
@@ -124,6 +138,9 @@ A deployment is not complete until you've confirmed that: alert fires → ticket
 
 **❌ Deploying EDR without client IT awareness.**
 Unknown agents appearing on endpoints generate IT support tickets and erode trust. Brief the IT team before deployment.
+
+**❌ Trusting RMM enrollment without checking tenant and site assignment.**
+An agent can be healthy but still expose the wrong policy or technician access if it lands under the wrong client or site. Validate assignment and audit evidence during the pilot, before fleet rollout.
 
 ---
 
