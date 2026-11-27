@@ -1,23 +1,7 @@
 name: Markdown Quality
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '**/*.md'
-      - '.github/workflows/markdown-quality.yml'
-      - '.markdownlint-cli2.jsonc'
-      - '.typos.toml'
-  pull_request:
-    paths:
-      - '**/*.md'
-      - '.github/workflows/markdown-quality.yml'
-      - '.markdownlint-cli2.jsonc'
-      - '.typos.toml'
-  schedule:
-    # Monthly external-link + freshness scan, 1st of the month at 09:00 UTC
-    - cron: '0 9 1 * *'
-  workflow_dispatch:
+  workflow_dispatch: 
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
